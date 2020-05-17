@@ -37,6 +37,25 @@ axios.get('http://192.168.1.100:8080/statistic/index')
     })
 }
 
+
+getDataA() {
+    axios.get('http://192.168.1.100:8080/statistic/index')
+        .then((res)=>{
+
+            // 注意this指向
+            this.setState({
+                list:res.data
+            });
+            console.log("res.data=" + JSON.stringify(res.data) );
+            //debugger
+
+        })
+        .catch((err)=>{
+            console.log(err)
+        })
+}
+
+
 componentDidMount() {
         this.getDataA();
 }
@@ -55,10 +74,10 @@ return (
                     {
                             this.state.list.map(obj=>{
                                     console.log("obj="+JSON.stringify(obj))
-                                    //switchCtl 0 可以上网 ；1 不可以上网 ; null 可以上网，但是不能设置
+                                    //switchCtrl 0 可以上网 ；1 不可以上网 ; null 可以上网，但是不能设置
 
-                                    var mychecked=1==obj.switchCtl ? false:true ;
-                                    var mydisabled=null==obj.switchCtl ? true:false ;
+                                    var mychecked=1==obj.switchCtrl ? false:true ;
+                                    var mydisabled=null==obj.switchCtrl ? true:false ;
                                     console.log("mychecked="+mychecked);
 
                                     //debugger
@@ -73,7 +92,7 @@ return (
                                                         checked={ mychecked }
                                                         onChange={() => {
                                                             this.setState({
-                                                            checked: !this.state.mychecked,
+                                                            checked: !this.state.mychecked
                                                             });
                                                         }}
                                                         disabled={mydisabled}
