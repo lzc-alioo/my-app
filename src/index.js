@@ -12,14 +12,18 @@ import Jsdemoc from './jsdemoc';
 import Nav from './nav';
 
 ReactDOM.render(
-    <Router>
-        <div>
-            <Nav/>
-            <Route exact path="/" component={Jsdemo} />
-            <Route  path="/Jsdemob" component={Jsdemob} />
-            <Route  path="/Jsdemoc" component={Jsdemoc} />
-        </div>
-    </Router>,
+    <React.StrictMode>
+        {/*<App />,*/}
+        <Router>
+            <div>
+                <Nav/>
+                <Route exact path="/" component={Jsdemo} />
+                <Route  path="/Jsdemob" component={Jsdemob} />
+                <Route  path="/Jsdemoc" component={Jsdemoc} />
+            </div>
+        </Router>
+    </React.StrictMode>,
+
   document.getElementById('root')
 );
 
