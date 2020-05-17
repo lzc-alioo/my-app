@@ -21,7 +21,7 @@ constructor(props){
 }
 
 getDataA() {
-axios.get('http://192.168.1.100:8080/statistic/index')
+    axios.get('http://192.168.1.100:8080/statistic/index')
     .then((res)=>{
 
             // 注意this指向
@@ -38,25 +38,32 @@ axios.get('http://192.168.1.100:8080/statistic/index')
 }
 
 
-getDataA() {
-    axios.get('http://192.168.1.100:8080/statistic/index')
-        .then((res)=>{
+accessCtrl(obj,event) {
 
-            // 注意this指向
-            this.setState({
-                list:res.data
-            });
-            console.log("res.data=" + JSON.stringify(res.data) );
-            //debugger
+    var alias=obj.alias;
+    var switchCtrl=obj.switchCtrl==0?1:0;
 
-        })
-        .catch((err)=>{
-            console.log(err)
-        })
+    //debugger
+    axios.get('http://192.168.1.100:8080/statistic/accessCtrl?alias='+ alias+'&switchCtrl='+switchCtrl)
+    .then((res)=>{
+
+        // 注意this指向
+        this.setState({
+            list:res.data
+        });
+        console.log("res.data=" + JSON.stringify(res.data) );
+        //debugger
+
+    })
+    .catch((err)=>{
+        console.log(err)
+    })
+
 }
 
 
 componentDidMount() {
+        console.log("进来了。。。")
         this.getDataA();
 }
 
@@ -90,11 +97,13 @@ return (
                                                     thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                                                     extra={<Switch
                                                         checked={ mychecked }
-                                                        onChange={() => {
-                                                            this.setState({
-                                                            checked: !this.state.mychecked
-                                                            });
-                                                        }}
+                                                        // onChange={() => {
+                                                            // this.setState({
+                                                            // checked: !this.state.mychecked
+                                                            //});
+                                                            //alert("666");
+                                                        // }}
+                                                        onChange={this.accessCtrl.bind(this,obj)}
                                                         disabled={mydisabled}
                                                         />
 
