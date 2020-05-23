@@ -1,19 +1,31 @@
 import { TabBar } from 'antd-mobile';
-import ReactDOM from "react-dom";
 import React from "react";
 import './TabBarExample.css'
+
+
+import Jsdemo from './jsdemo';
+import Jsdemob from './jsdemob';
+import Jsdemoc from './jsdemoc';
+
 
 class TabBarExample extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'redTab',
+            selectedTab: 'blueTab',
             hidden: false,
-            fullScreen: false,
+            fullScreen: true,
         };
     }
 
     renderContent(pageText) {
+        if(pageText=='jsdemo'){
+            return  <Jsdemo/>
+        }else if(pageText=='jsdemob'){
+            return  <Jsdemob/>
+        }else if(pageText=='jsdemoc'){
+            return  <Jsdemoc/>
+        }
         return (
             <div style={{ backgroundColor: 'white', height: '100%', textAlign: 'center' }}>
                 <div style={{ paddingTop: 60 }}>Clicked “{pageText}” tab， show “{pageText}” information</div>
@@ -49,9 +61,10 @@ class TabBarExample extends React.Component {
                     tintColor="#33A3F4"
                     barTintColor="white"
                     hidden={this.state.hidden}
+                    tabBarPosition="top"
                 >
                     <TabBar.Item
-                        title="Life"
+                        title="路由"
                         key="Life"
                         icon={<div style={{
                             width: '22px',
@@ -74,7 +87,7 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId"
                     >
-                        {this.renderContent('Life')}
+                        {this.renderContent('jsdemo')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -91,7 +104,7 @@ class TabBarExample extends React.Component {
                                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        title="Koubei"
+                        title="jsdemob"
                         key="Koubei"
                         badge={'new'}
                         selected={this.state.selectedTab === 'redTab'}
@@ -102,7 +115,7 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('Koubei')}
+                        {this.renderContent('jsdemob')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -119,7 +132,7 @@ class TabBarExample extends React.Component {
                                 background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        title="Friend"
+                        title="jsdemoc"
                         key="Friend"
                         dot
                         selected={this.state.selectedTab === 'greenTab'}
@@ -129,22 +142,9 @@ class TabBarExample extends React.Component {
                             });
                         }}
                     >
-                        {this.renderContent('Friend')}
+                        {this.renderContent('jsdemoc')}
                     </TabBar.Item>
-                    <TabBar.Item
-                        icon={{ uri: 'https://zos.alipayobjects.com/rmsportal/asJMfBrNqpMMlVpeInPQ.svg' }}
-                        selectedIcon={{ uri: 'https://zos.alipayobjects.com/rmsportal/gjpzzcrPMkhfEqgbYvmN.svg' }}
-                        title="My"
-                        key="my"
-                        selected={this.state.selectedTab === 'yellowTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'yellowTab',
-                            });
-                        }}
-                    >
-                        {this.renderContent('My')}
-                    </TabBar.Item>
+
                 </TabBar>
             </div>
         );
