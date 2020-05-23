@@ -10,6 +10,7 @@ import Jsdemo from './jsdemo';
 import Jsdemob from './jsdemob';
 import Jsdemoc from './jsdemoc';
 import Nav from './nav';
+import TabBarExample from "./TabBarExample";
 
 ReactDOM.render(
     <React.StrictMode>
@@ -22,6 +23,7 @@ ReactDOM.render(
                 <Route  path="/Jsdemoc" component={Jsdemoc} />
             </div>
         </Router>
+        <TabBarExample/>
     </React.StrictMode>,
 
   document.getElementById('root')
