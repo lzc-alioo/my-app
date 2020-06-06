@@ -21,7 +21,7 @@ constructor(props){
 }
 
 getDataA() {
-    axios.get('http://192.168.1.100:8080/statistic/index')
+    axios.get('http://192.168.1.109:80/statistic/getList')
     .then((res)=>{
 
             // 注意this指向
@@ -44,7 +44,7 @@ accessCtrl(obj,event) {
     var switchCtrl=obj.switchCtrl==0?1:0;
 
     //debugger
-    axios.get('http://192.168.1.100:8080/statistic/accessCtrl?alias='+ alias+'&switchCtrl='+switchCtrl)
+    axios.get('http://192.168.1.109:80/statistic/accessCtrl?alias='+ alias+'&switchCtrl='+switchCtrl)
     .then((res)=>{
 
         // 注意this指向
