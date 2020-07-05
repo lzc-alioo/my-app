@@ -1,6 +1,6 @@
 
-myserver_dev="192.168.1.109:80"
-myserver_prod="192.168.1.108:80"
+myserver_dev="192.168.16.233:8081"
+myserver_prod="192.168.16.198:8081"
 
 sed -i "s/$myserver_dev/$myserver_prod/g" src/*.js
 

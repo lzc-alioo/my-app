@@ -1,4 +1,4 @@
-Dockerfile
+定制Dockerfile
 /Users/alioo/work/docker/react/Dockerfile
 ```
 
@@ -33,6 +33,9 @@ RUN echo "alias ll='ls -al'" >> ~/.bashrc
 RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 
 ```
+
+
+
 
 
 
