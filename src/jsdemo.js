@@ -68,7 +68,7 @@ accessCtrl(obj,event) {
 
 
 componentDidMount() {
-        console.log("进来了。。。")
+        console.log("jsdemo componentDidMount 进来了。。。")
         this.getDataA();
 }
 
@@ -85,7 +85,7 @@ return (
 
                     {
                             this.state.list.map(obj=>{
-                                    console.log("obj="+JSON.stringify(obj))
+                                    //console.log("obj="+JSON.stringify(obj))
 
                                     //TTFFFFTFFTFF ali15可上网   ；TTTFFFTFFTFF 不可上网
                                     //FTFFFFTFFTFF ali11可上网   ；FFTFFFTFFTFF 不可上网
@@ -96,7 +96,7 @@ return (
                                     //第3位是F 可以上网，第3位是T不可上网
                                     var mychecked = ( 'F' === obj.flag.substring(2,3) )  ? true : false;
 
-                                console.log(obj.name+","+ obj.flag+",mychecked="+mychecked);
+                                    //console.log(obj.name+","+ obj.flag+",mychecked="+mychecked);
 
                                     //debugger
                                     return (

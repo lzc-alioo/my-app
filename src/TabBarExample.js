@@ -1,5 +1,5 @@
-import { TabBar } from 'antd-mobile';
 import React from "react";
+import { TabBar } from 'antd-mobile';
 import './TabBarExample.css'
 
 
@@ -65,7 +65,7 @@ class TabBarExample extends React.Component {
                     tabBarPosition="top"
                 >
                     <TabBar.Item
-                        title="路由"
+                        title="路由开关"
                         key="Life"
                         icon={<div style={{
                             width: '22px',
@@ -105,7 +105,7 @@ class TabBarExample extends React.Component {
                                 background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        title="jsdemob"
+                        title="TV定时"
                         key="Koubei"
                         badge={'new'}
                         selected={this.state.selectedTab === 'redTab'}
@@ -133,7 +133,7 @@ class TabBarExample extends React.Component {
                                 background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
                             />
                         }
-                        title="jsdemoc"
+                        title="待启用"
                         key="Friend"
                         dot
                         selected={this.state.selectedTab === 'greenTab'}
