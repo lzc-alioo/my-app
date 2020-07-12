@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Card, WhiteSpace } from 'antd-mobile';
-import { List, InputItem, Switch, Stepper, Range, Button} from 'antd-mobile';
+import { List,  Switch } from 'antd-mobile';
 import {createForm} from "rc-form";
 
 import axios from 'axios'
@@ -44,7 +44,7 @@ getDataA() {
 accessCtrl(obj,event) {
 
     var mac=obj.mac;
-    var mychecked = ( 'F' == obj.flag.substring(2,3) )  ? true : false;
+    var mychecked = ( 'F' === obj.flag.substring(2,3) )  ? true : false;
     var act = mychecked ? "on" : "off";
 
 
@@ -74,7 +74,7 @@ componentDidMount() {
 
 
 render() {
-const { getFieldProps } = this.props.form;
+// const { getFieldProps } = this.props.form;
 
 return (
     <div>
@@ -94,7 +94,7 @@ return (
                                     //var mychecked = ('FTFFFFTFFTFF' == obj.flag || 'FTFFFFFFFTFF' == obj.flag || 'FFFFFFTFFTFF' == obj.flag || 'TTFFFFTFFTFF' == obj.flag) ? true : false;
 
                                     //第3位是F 可以上网，第3位是T不可上网
-                                    var mychecked = ( 'F' == obj.flag.substring(2,3) )  ? true : false;
+                                    var mychecked = ( 'F' === obj.flag.substring(2,3) )  ? true : false;
 
                                 console.log(obj.name+","+ obj.flag+",mychecked="+mychecked);
 

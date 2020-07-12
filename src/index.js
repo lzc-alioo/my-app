@@ -1,30 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-// import App from './App';
 import * as serviceWorker from './serviceWorker';
-// import {BrowserRouter as Router , Route} from 'react-router-dom';
 import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.less'
 
 
-// import Jsdemo from './jsdemo';
-// import Jsdemob from './jsdemob';
-// import Jsdemoc from './jsdemoc';
-// import Nav from './nav';
 import TabBarExample from "./TabBarExample";
 
 ReactDOM.render(
     <React.StrictMode>
         <TabBarExample/>
-        {/*<App />,*/}
-        {/*<Router>*/}
-            {/*<div>*/}
-                {/*<Nav/>*/}
-                {/*<Route exact path="/" component={Jsdemo} />*/}
-                {/*<Route  path="/Jsdemob" component={Jsdemob} />*/}
-                {/*<Route  path="/Jsdemoc" component={Jsdemoc} />*/}
-            {/*</div>*/}
-        {/*</Router>*/}
     </React.StrictMode>,
 
   document.getElementById('root')
