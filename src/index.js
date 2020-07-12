@@ -8,9 +8,7 @@ import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.
 import TabBarExample from "./TabBarExample";
 
 ReactDOM.render(
-    <React.StrictMode>
-        <TabBarExample/>
-    </React.StrictMode>,
+        <TabBarExample/>,
 
   document.getElementById('root')
 );
