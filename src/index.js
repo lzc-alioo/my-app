@@ -1,15 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+// import App from './App';
 import * as serviceWorker from './serviceWorker';
-import {BrowserRouter as Router , Route} from 'react-router-dom';
+// import {BrowserRouter as Router , Route} from 'react-router-dom';
+import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.less'
 
 
-import Jsdemo from './jsdemo';
-import Jsdemob from './jsdemob';
-import Jsdemoc from './jsdemoc';
-import Nav from './nav';
+// import Jsdemo from './jsdemo';
+// import Jsdemob from './jsdemob';
+// import Jsdemoc from './jsdemoc';
+// import Nav from './nav';
 import TabBarExample from "./TabBarExample";
 
 ReactDOM.render(

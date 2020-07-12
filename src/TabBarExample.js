@@ -18,12 +18,13 @@ class TabBarExample extends React.Component {
         };
     }
 
+
     renderContent(pageText) {
-        if(pageText=='jsdemo'){
+        if(pageText==='jsdemo'){
             return  <Jsdemo/>
-        }else if(pageText=='jsdemob'){
+        }else if(pageText==='jsdemob'){
             return  <Jsdemob/>
-        }else if(pageText=='jsdemoc'){
+        }else if(pageText==='jsdemoc'){
             return  <Jsdemoc/>
         }
         return (
