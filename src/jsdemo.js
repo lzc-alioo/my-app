@@ -6,9 +6,6 @@ import axios from 'axios'
 
 const Item = List.Item;
 
-
-const server_path = 'http://192.168.16.233:8081';
-
 class JsDemo extends React.Component {
 
     constructor(props) {
@@ -19,15 +16,20 @@ class JsDemo extends React.Component {
         }
     }
 
-    getDataA() {
-        axios.get(server_path + '/statistic/getList')
+    componentDidMount() {
+        console.log("jsdemo componentDidMount 进来了。。。")
+        this.getList();
+    }
+
+    getList() {
+        axios.get(this.props.server_path + '/statistic/getList')
             .then((res) => {
 
                 // 注意this指向
                 this.setState({
                     list: res.data.terminals
                 });
-                console.log("res.data=" + JSON.stringify(res.data));
+                // console.log("res.data=" + JSON.stringify(res.data));
                 //debugger
 
             })
@@ -43,16 +45,15 @@ class JsDemo extends React.Component {
         var mychecked = ('F' === obj.flag.substring(2, 3)) ? true : false;
         var act = mychecked ? "on" : "off";
 
-
         //debugger
-        axios.get(server_path + '/statistic/accessCtrl?mac=' + mac + '&act=' + act)
+        axios.get(this.props.server_path  + '/statistic/accessCtrl?mac=' + mac + '&act=' + act)
             .then((res) => {
 
                 // 注意this指向
                 this.setState({
                     list: res.data.terminals
                 });
-                console.log("res.data=" + JSON.stringify(res.data));
+                // console.log("res.data=" + JSON.stringify(res.data));
                 //debugger
 
             })
@@ -63,19 +64,12 @@ class JsDemo extends React.Component {
     }
 
 
-    componentDidMount() {
-        console.log("jsdemo componentDidMount 进来了。。。")
-        this.getDataA();
-    }
-
-
     render() {
         return (
             <div>
                 <WhiteSpace size="lg"/>
                 <List
                 >
-
 
                     {
                         this.state.list.map((obj,i) => {
@@ -90,7 +84,7 @@ class JsDemo extends React.Component {
                             //第3位是F 可以上网，第3位是T不可上网
                             var mychecked = ('F' === obj.flag.substring(2, 3)) ? true : false;
 
-                            //console.log(obj.name+","+ obj.flag+",mychecked="+mychecked);
+                            // console.log("terminallist i=" + i + ",obj=" + JSON.stringify(obj))
 
                             //debugger
                             return (
@@ -98,16 +92,10 @@ class JsDemo extends React.Component {
 
                                     <Card full>
                                         <Card.Header
-                                            title={obj.name + " ( " + obj.ip + ")"}
+                                            title={obj.name + " ( " + (obj.ip ? obj.ip:'--') + ")"}
                                             thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                                             extra={<Switch
                                                 checked={mychecked}
-                                                // onChange={() => {
-                                                // this.setState({
-                                                // checked: !this.state.mychecked
-                                                //});
-                                                //alert("666");
-                                                // }}
                                                 onChange={this.accessCtrl.bind(this, obj)}
                                             />
 

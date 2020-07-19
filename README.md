@@ -35,15 +35,9 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 ```
 
 # this函数绑定
-
+## 方法1，先用变量that接一下，let that = this; （传统做法）
+## 方法2，() =>是jsx语法，可以直接拿到外层的对象this（匿名函数 + ()=>）
 ```
-    // componentDidMount() {
-    //     this.timerID = setInterval(
-    //         () => this.setState({date: new Date()}),
-    //         1000
-    //     );
-    // }
-
     componentDidMount() {
         let that = this;
         setInterval(function () {
@@ -52,8 +46,46 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
             })
         }, 1000);
     }
-
+    
+    // componentDidMount() {
+    //     this.timerID = setInterval(
+    //         () => this.setState({date: new Date()}),
+    //         1000
+    //     );
+    // }
+    
 ```
+## 方法3，跟方法2类似，使用的是() => 语法，不过方法2里面是匿名函数，这里是非匿名函数（非匿名函数 + ()=>）
+```
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+    }
+
+    handleClick = () => {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+```
+## 方法4，对匿名函数进行绑定 (匿名函数 + 绑定)
+```
+  componentDidMount() {
+    this.timer = setInterval(function () {
+      var opacity = this.state.opacity;
+      opacity -= .05;
+      if (opacity < 0.1) {
+        opacity = 1.0;
+      }
+      this.setState({
+        opacity: opacity
+      });
+    }.bind(this), 100);
+  }
+  
+```
+
+## 方法5，在构造函数里先绑定一下this.handleClick = this.handleClick.bind(this); （非匿名函数 + 绑定）
 ```
     constructor(props) {
         super(props);
@@ -69,27 +101,11 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
         }));
     }
 ```
-```
-    constructor(props) {
-        super(props);
-        this.state = {isToggleOn: true};
 
-        // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
-        //this.handleClick = this.handleClick.bind(this);
-    }
+# todo
+分环境配置文件
+当打开第2个tab时，刷新页面时仍回到第2个tab页面
 
-    // handleClick() {
-    //     this.setState(prevState => ({
-    //         isToggleOn: !prevState.isToggleOn
-    //     }));
-    // }
-
-    handleClick = () => {
-        this.setState(prevState => ({
-            isToggleOn: !prevState.isToggleOn
-        }));
-    }
-```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

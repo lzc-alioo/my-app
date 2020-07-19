@@ -4,9 +4,10 @@ import './TabBarExample.css'
 
 
 import Jsdemo from './jsdemo';
-import Jsdemob from './jsdemob';
+import TimeList from './component/timelist/TimeList';
 import Jsdemoc from './jsdemoc';
 
+const server_path = 'http://192.168.16.233:8081';
 
 class TabBarExample extends React.Component {
     constructor(props) {
@@ -16,14 +17,23 @@ class TabBarExample extends React.Component {
             hidden: false,
             fullScreen: true,
         };
+
+        console.log("server_path=" , process.env.BASE_URL ,process.env.REACT_APP_BASE_URL ,'%REACT_APP_BASE_URL%' ,process.env)
+        if(process.env.NODE_ENV === 'development'){
+            console.log('开发环境')
+            // debugger
+        }else if(process.env.NODE_ENV === 'production'){
+            console.log('生产环境')
+        }
+
     }
 
 
     renderContent(pageText) {
         if(pageText==='jsdemo'){
-            return  <Jsdemo/>
-        }else if(pageText==='jsdemob'){
-            return  <Jsdemob/>
+            return  <Jsdemo server_path={server_path} />
+        }else if(pageText==='timelist'){
+            return  <TimeList server_path={server_path}/>
         }else if(pageText==='jsdemoc'){
             return  <Jsdemoc/>
         }
@@ -92,7 +102,7 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('jsdemob')}
+                        {this.renderContent('timelist')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
