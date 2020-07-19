@@ -11,7 +11,7 @@ const now = new Date(nowTimeStamp);
 const utcOffset = new Date(now.getTime() - (now.getTimezoneOffset() * 60000));
 
 
-const server_path = 'http://192.168.16.198:8081';
+const server_path = 'http://192.168.16.233:8081';
 
 class JsDemob extends React.Component {
 

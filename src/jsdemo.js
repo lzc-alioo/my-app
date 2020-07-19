@@ -7,7 +7,7 @@ import axios from 'axios'
 const Item = List.Item;
 
 
-const server_path = 'http://192.168.16.198:8081';
+const server_path = 'http://192.168.16.233:8081';
 
 class JsDemo extends React.Component {
 
