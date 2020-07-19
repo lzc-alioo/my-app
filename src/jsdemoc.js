@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router , Route} from 'react-router-dom';
-import { Button, WhiteSpace, WingBlank } from 'antd-mobile';
+// import {Route} from 'react-router-dom';
+import {Button, WhiteSpace, WingBlank} from 'antd-mobile';
 
 const ButtonExample = () => (
     <WingBlank>

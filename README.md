@@ -1,4 +1,4 @@
-定制Dockerfile
+# 定制Dockerfile
 /Users/alioo/work/docker/react/Dockerfile
 ```
 
@@ -34,9 +34,62 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 
 ```
 
+# this函数绑定
 
+```
+    // componentDidMount() {
+    //     this.timerID = setInterval(
+    //         () => this.setState({date: new Date()}),
+    //         1000
+    //     );
+    // }
 
+    componentDidMount() {
+        let that = this;
+        setInterval(function () {
+            that.setState({
+                date: new Date()
+            })
+        }, 1000);
+    }
 
+```
+```
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+        // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+        this.handleClick = this.handleClick.bind(this);
+    }
+
+    handleClick() {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+```
+```
+    constructor(props) {
+        super(props);
+        this.state = {isToggleOn: true};
+
+        // 这边绑定是必要的，这样 `this` 才能在回调函数中使用
+        //this.handleClick = this.handleClick.bind(this);
+    }
+
+    // handleClick() {
+    //     this.setState(prevState => ({
+    //         isToggleOn: !prevState.isToggleOn
+    //     }));
+    // }
+
+    handleClick = () => {
+        this.setState(prevState => ({
+            isToggleOn: !prevState.isToggleOn
+        }));
+    }
+```
 
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
