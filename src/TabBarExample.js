@@ -5,8 +5,8 @@ import './TabBarExample.css'
 
 import MachineList from './MachineList';
 import TimeList from './component/timelist/TimeList';
-import ChartItem from './component/chart/ChartItem';
-import ChartList from './component/chart/ChartList';
+import NetChartItem from './component/chart/NetChartItem';
+import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
 // const server_path = 'http://192.168.16.233:8081';
@@ -39,10 +39,10 @@ class TabBarExample extends React.Component {
             return <MachineList server_path={server_path}/>
         } else if (pageText === 'time-list') {
             return <TimeList server_path={server_path}/>
-        } else if (pageText === 'chart-item') {
-            return <ChartItem server_path={server_path} machineName='X3-55'/>
+        } else if (pageText === 'net-chart-item') {
+            return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'chart-list') {
-            return <ChartList server_path={server_path}/>
+            return <NetChartList server_path={server_path}/>
         } else if (pageText === 'jsdemoc') {
             return <Jsdemoc/>
         }
@@ -145,7 +145,7 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('chart-item')}
+                        {this.renderContent('net-chart-item')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={

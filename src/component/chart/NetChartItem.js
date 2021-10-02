@@ -3,7 +3,7 @@ import {Line} from '@ant-design/charts';
 import axios from "axios";
 
 
-class ChartItem extends Component {
+class NetChartItem extends Component {
 
     constructor(props) {
         super(props);
@@ -67,4 +67,4 @@ class ChartItem extends Component {
     }
 }
 
-export default ChartItem;
+export default NetChartItem;
