@@ -103,7 +103,14 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 ```
 
 # todo
-分环境配置文件
+## 分环境配置文件
+20211002更新：已完成，见配置文件 /Users/alioo/work/gitstudy/my-app/.env.development，/Users/alioo/work/gitstudy/my-app/.env.production，
+值得注意的是变量命名需要以REACT_APP_开头
+
+## 图表问题
+20211002更新：已完成
+
+
 当打开第2个tab时，刷新页面时仍回到第2个tab页面
 
 
