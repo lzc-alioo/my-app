@@ -9,7 +9,7 @@ import NetChartItem from './component/chart/NetChartItem';
 import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
-// const server_path = 'http://192.168.16.233:8081';
+// const server_path = 'http://192.168.16.198:8081';
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
 class TabBarExample extends React.Component {
