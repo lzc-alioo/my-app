@@ -6,12 +6,10 @@ import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.
 
 
 import TabBarExample from "./TabBarExample";
-import Example from "./study/Example.js";
 
 ReactDOM.render(
     <div>
         <TabBarExample/>
-        {/*<Example/>*/}
     </div>,
 
   document.getElementById('root')

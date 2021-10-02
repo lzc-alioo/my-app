@@ -1,13 +1,16 @@
 import React from "react";
-import { TabBar } from 'antd-mobile';
+import {TabBar} from 'antd-mobile';
 import './TabBarExample.css'
 
 
-import Jsdemo from './jsdemo';
+import MachineList from './MachineList';
 import TimeList from './component/timelist/TimeList';
+import ChartItem from './component/chart/ChartItem';
+import ChartList from './component/chart/ChartList';
 import Jsdemoc from './jsdemoc';
 
-const server_path = 'http://192.168.16.233:8081';
+// const server_path = 'http://192.168.16.233:8081';
+const server_path = process.env.REACT_APP_SERVER_PATH;
 
 class TabBarExample extends React.Component {
     constructor(props) {
@@ -18,11 +21,13 @@ class TabBarExample extends React.Component {
             fullScreen: true,
         };
 
-        console.log("server_path=" , process.env.BASE_URL ,process.env.REACT_APP_BASE_URL ,'%REACT_APP_BASE_URL%' ,process.env)
-        if(process.env.NODE_ENV === 'development'){
+        console.log("1.REACT_APP_BASE_URL=", process.env.REACT_APP_BASE_URL, process.env.NODE_ENV)
+        console.log("2.REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
+
+        if (process.env.NODE_ENV === 'development') {
             console.log('开发环境')
             // debugger
-        }else if(process.env.NODE_ENV === 'production'){
+        } else if (process.env.NODE_ENV === 'production') {
             console.log('生产环境')
         }
 
@@ -30,19 +35,23 @@ class TabBarExample extends React.Component {
 
 
     renderContent(pageText) {
-        if(pageText==='jsdemo'){
-            return  <Jsdemo server_path={server_path} />
-        }else if(pageText==='timelist'){
-            return  <TimeList server_path={server_path}/>
-        }else if(pageText==='jsdemoc'){
-            return  <Jsdemoc/>
+        if (pageText === 'machine-list') {
+            return <MachineList server_path={server_path}/>
+        } else if (pageText === 'time-list') {
+            return <TimeList server_path={server_path}/>
+        } else if (pageText === 'chart-item') {
+            return <ChartItem server_path={server_path} machineName='X3-55'/>
+        } else if (pageText === 'chart-list') {
+            return <ChartList server_path={server_path}/>
+        } else if (pageText === 'jsdemoc') {
+            return <Jsdemoc/>
         }
 
     }
 
     render() {
         return (
-            <div style={this.state.fullScreen ? { position: 'fixed', height: '100%', width: '100%', top: 0 } : { height: 400 }}>
+            <div style={this.state.fullScreen ? {position: 'fixed', height: '100%', width: '100%', top: 0} : {height: 400}}>
                 <TabBar
                     unselectedTintColor="#949494"
                     tintColor="#33A3F4"
@@ -56,13 +65,15 @@ class TabBarExample extends React.Component {
                         icon={<div style={{
                             width: '22px',
                             height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat' }}
+                            background: 'url(https://zos.alipayobjects.com/rmsportal/sifuoDUQdAFKAVcFGROC.svg) center center /  21px 21px no-repeat'
+                        }}
                         />
                         }
                         selectedIcon={<div style={{
                             width: '22px',
                             height: '22px',
-                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat' }}
+                            background: 'url(https://zos.alipayobjects.com/rmsportal/iSrlOTqrKddqbOmlvUfq.svg) center center /  21px 21px no-repeat'
+                        }}
                         />
                         }
                         selected={this.state.selectedTab === 'blueTab'}
@@ -74,21 +85,23 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId"
                     >
-                        {this.renderContent('jsdemo')}
+                        {this.renderContent('machine-list')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
                             <div style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat' }}
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
+                            }}
                             />
                         }
                         selectedIcon={
                             <div style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat' }}
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
+                            }}
                             />
                         }
                         title="TV定时"
@@ -102,21 +115,83 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('timelist')}
+                        {this.renderContent('time-list')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
                             <div style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat' }}
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
+                            }}
                             />
                         }
                         selectedIcon={
                             <div style={{
                                 width: '22px',
                                 height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat' }}
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
+                            }}
+                            />
+                        }
+                        title="图表"
+                        key="Koubei"
+                        badge={'new'}
+                        selected={this.state.selectedTab === 'blackTab'}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 'blackTab',
+                            });
+                        }}
+                        data-seed="logId1"
+                    >
+                        {this.renderContent('chart-item')}
+                    </TabBar.Item>
+                    <TabBar.Item
+                        icon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
+                            }}
+                            />
+                        }
+                        selectedIcon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
+                            }}
+                            />
+                        }
+                        title="图表box"
+                        key="Koubei"
+                        badge={'new'}
+                        selected={this.state.selectedTab === 'yellowTab'}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 'yellowTab',
+                            });
+                        }}
+                        data-seed="logId1"
+                    >
+                        {this.renderContent('chart-list')}
+                    </TabBar.Item>
+                    <TabBar.Item
+                        icon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat'
+                            }}
+                            />
+                        }
+                        selectedIcon={
+                            <div style={{
+                                width: '22px',
+                                height: '22px',
+                                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat'
+                            }}
                             />
                         }
                         title="待启用"

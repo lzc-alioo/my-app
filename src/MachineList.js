@@ -6,7 +6,7 @@ import axios from 'axios'
 
 const Item = List.Item;
 
-class JsDemo extends React.Component {
+class MachineList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -17,7 +17,7 @@ class JsDemo extends React.Component {
     }
 
     componentDidMount() {
-        console.log("jsdemo componentDidMount 进来了。。。")
+        console.log("MachineList componentDidMount 进来了。。。")
         this.getList();
     }
 
@@ -121,5 +121,5 @@ class JsDemo extends React.Component {
     }
 }
 
-export default JsDemo
+export default MachineList
 
