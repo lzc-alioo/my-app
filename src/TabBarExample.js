@@ -3,13 +3,13 @@ import {TabBar} from 'antd-mobile';
 import './TabBarExample.css'
 
 
-import MachineList from './MachineList';
+import MachineList from './component/MachineList';
 import TimeList from './component/timelist/TimeList';
 import NetChartItem from './component/chart/NetChartItem';
 import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
-// const server_path = 'http://192.168.16.233:8081';
+// const server_path = 'http://192.168.16.198:8081';
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
 class TabBarExample extends React.Component {
@@ -39,9 +39,9 @@ class TabBarExample extends React.Component {
             return <MachineList server_path={server_path}/>
         } else if (pageText === 'time-list') {
             return <TimeList server_path={server_path}/>
-        } else if (pageText === 'net-chart-item') {
-            return <NetChartItem server_path={server_path} machineName='X3-55'/>
-        } else if (pageText === 'chart-list') {
+        // } else if (pageText === 'net-chart-item') {
+        //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
+        } else if (pageText === 'net-chart-list') {
             return <NetChartList server_path={server_path}/>
         } else if (pageText === 'jsdemoc') {
             return <Jsdemoc/>
@@ -117,6 +117,36 @@ class TabBarExample extends React.Component {
                     >
                         {this.renderContent('time-list')}
                     </TabBar.Item>
+                    {/*<TabBar.Item*/}
+                        {/*icon={*/}
+                            {/*<div style={{*/}
+                                {/*width: '22px',*/}
+                                {/*height: '22px',*/}
+                                {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'*/}
+                            {/*}}*/}
+                            {/*/>*/}
+                        {/*}*/}
+                        {/*selectedIcon={*/}
+                            {/*<div style={{*/}
+                                {/*width: '22px',*/}
+                                {/*height: '22px',*/}
+                                {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'*/}
+                            {/*}}*/}
+                            {/*/>*/}
+                        {/*}*/}
+                        {/*title="图表"*/}
+                        {/*key="Koubei"*/}
+                        {/*badge={'new'}*/}
+                        {/*selected={this.state.selectedTab === 'blackTab'}*/}
+                        {/*onPress={() => {*/}
+                            {/*this.setState({*/}
+                                {/*selectedTab: 'blackTab',*/}
+                            {/*});*/}
+                        {/*}}*/}
+                        {/*data-seed="logId1"*/}
+                    {/*>*/}
+                        {/*{this.renderContent('net-chart-item')}*/}
+                    {/*</TabBar.Item>*/}
                     <TabBar.Item
                         icon={
                             <div style={{
@@ -134,39 +164,9 @@ class TabBarExample extends React.Component {
                             }}
                             />
                         }
-                        title="图表"
+                        title="图表测试"
                         key="Koubei"
-                        badge={'new'}
-                        selected={this.state.selectedTab === 'blackTab'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'blackTab',
-                            });
-                        }}
-                        data-seed="logId1"
-                    >
-                        {this.renderContent('net-chart-item')}
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'
-                            }}
-                            />
-                        }
-                        selectedIcon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'
-                            }}
-                            />
-                        }
-                        title="图表box"
-                        key="Koubei"
-                        badge={'new'}
+                        badge={''}
                         selected={this.state.selectedTab === 'yellowTab'}
                         onPress={() => {
                             this.setState({
@@ -175,7 +175,7 @@ class TabBarExample extends React.Component {
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('chart-list')}
+                        {this.renderContent('net-chart-list')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
