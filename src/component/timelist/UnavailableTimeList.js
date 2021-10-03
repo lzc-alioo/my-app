@@ -4,7 +4,7 @@ import {List} from 'antd-mobile';
 import axios from "axios";
 import TimeItem from "./TimeItem";
 
-class TimeList extends React.Component {
+class UnavailableTimeList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -106,4 +106,4 @@ class TimeList extends React.Component {
 }
 
 
-export default TimeList
+export default UnavailableTimeList

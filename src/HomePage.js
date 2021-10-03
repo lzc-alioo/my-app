@@ -1,18 +1,18 @@
 import React from "react";
 import {TabBar} from 'antd-mobile';
-import './TabBarExample.css'
+import './HomePage.css'
 
 
 import MachineList from './component/MachineList';
-import TimeList from './component/timelist/TimeList';
-import NetChartItem from './component/chart/NetChartItem';
+import UnavailableTimeList from './component/timelist/UnavailableTimeList';
+// import NetChartItem from './component/chart/NetChartItem';
 import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
-// const server_path = 'http://192.168.16.198:8081';
+// const server_path = 'http://192.168.16.233:8081';
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
-class TabBarExample extends React.Component {
+class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -38,7 +38,7 @@ class TabBarExample extends React.Component {
         if (pageText === 'machine-list') {
             return <MachineList server_path={server_path}/>
         } else if (pageText === 'time-list') {
-            return <TimeList server_path={server_path}/>
+            return <UnavailableTimeList server_path={server_path}/>
         // } else if (pageText === 'net-chart-item') {
         //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'net-chart-list') {
@@ -213,5 +213,5 @@ class TabBarExample extends React.Component {
     }
 }
 
-export default TabBarExample
+export default HomePage
 

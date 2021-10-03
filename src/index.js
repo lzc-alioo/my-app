@@ -5,11 +5,11 @@ import * as serviceWorker from './serviceWorker';
 import 'antd-mobile/dist/antd-mobile.css';  // or 'antd-mobile/dist/antd-mobile.less'
 
 
-import TabBarExample from "./TabBarExample";
+import HomePage from "./HomePage";
 
 ReactDOM.render(
     <div>
-        <TabBarExample/>
+        <HomePage/>
     </div>,
 
   document.getElementById('root')

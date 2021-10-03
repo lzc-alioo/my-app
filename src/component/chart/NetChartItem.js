@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Line} from '@ant-design/charts';
 import axios from "axios";
-
+import './NetChartItem.css'
 
 class NetChartItem extends Component {
 
@@ -18,7 +18,7 @@ class NetChartItem extends Component {
     }
 
     getList() {
-        axios.get(this.props.server_path + '/statistic/netWorkData?datestr=&machineName=' + this.props.machineName)
+        axios.get(this.props.server_path + '/statistic/getNetWorkData?datestr=&machineName=' + this.props.machineName)
             .then((res) => {
 
                 // 注意this指向
@@ -54,16 +54,31 @@ class NetChartItem extends Component {
         const config = {
             data,
             height: 400,
+            padding: [40, 20, 40, 20],
             xField: 'time',
             yField: 'value',
             point: {
                 size: 5,
                 shape: 'diamond',
             },
+            label: {
+                style: {
+                    stroke: 'green',  //文字的描边
+                    fill: 'red', //文字的填充色
+
+                },
+            },
+
         };
 
-        return <Line {...config} />;
+        // return <Line {...config} />;
 
+        return (
+            <div className="g2">
+                <div>{this.props.machineName}</div>
+                <Line {...config} />
+            </div>
+        )
     }
 }
 

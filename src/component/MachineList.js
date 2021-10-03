@@ -22,7 +22,7 @@ class MachineList extends React.Component {
     }
 
     getList() {
-        axios.get(this.props.server_path + '/statistic/getList')
+        axios.get(this.props.server_path + '/statistic/getMachineList')
             .then((res) => {
 
                 // 注意this指向
@@ -46,7 +46,7 @@ class MachineList extends React.Component {
         var act = mychecked ? "on" : "off";
 
         //debugger
-        axios.get(this.props.server_path  + '/statistic/accessCtrl?mac=' + mac + '&act=' + act)
+        axios.get(this.props.server_path  + '/statistic/setNetWorkSwitch?mac=' + mac + '&act=' + act)
             .then((res) => {
 
                 // 注意this指向

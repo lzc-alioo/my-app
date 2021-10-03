@@ -34,6 +34,14 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 
 ```
 
+
+# 启动
+```
+docker container start lzcreactv1
+docker exec -it lzcreactv1 bash
+```
+
+
 # this函数绑定
 ## 方法1，先用变量that接一下，let that = this; （传统做法）
 ## 方法2，() =>是jsx语法，可以直接拿到外层的对象this（匿名函数 + ()=>）
@@ -110,8 +118,9 @@ RUN echo "alias grep='grep --color=auto '" >> ~/.bashrc
 ## 图表问题
 20211002更新：已完成
 
-
+## url同步更新
 当打开第2个tab时，刷新页面时仍回到第2个tab页面
+
 
 
 
