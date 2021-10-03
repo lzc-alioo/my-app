@@ -16,7 +16,7 @@ class HomePage extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            selectedTab: 'blueTab',
+            selectedTab: 'machine-list-tab',
             hidden: false,
             fullScreen: true,
         };
@@ -76,11 +76,11 @@ class HomePage extends React.Component {
                         }}
                         />
                         }
-                        selected={this.state.selectedTab === 'blueTab'}
+                        selected={this.state.selectedTab === 'machine-list-tab'}
                         badge={1}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'blueTab',
+                                selectedTab: 'machine-list-tab',
                             });
                         }}
                         data-seed="logId"
@@ -107,10 +107,10 @@ class HomePage extends React.Component {
                         title="TV定时"
                         key="Koubei"
                         badge={'new'}
-                        selected={this.state.selectedTab === 'redTab'}
+                        selected={this.state.selectedTab === 'time-list-tab'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'redTab',
+                                selectedTab: 'time-list-tab',
                             });
                         }}
                         data-seed="logId1"
@@ -167,10 +167,10 @@ class HomePage extends React.Component {
                         title="图表测试"
                         key="Koubei"
                         badge={''}
-                        selected={this.state.selectedTab === 'yellowTab'}
+                        selected={this.state.selectedTab === 'net-chart-list-tab'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'yellowTab',
+                                selectedTab: 'net-chart-list-tab',
                             });
                         }}
                         data-seed="logId1"
