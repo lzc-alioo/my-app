@@ -14,11 +14,18 @@ class MachineList extends React.Component {
             list: [],
             mychecked: true
         }
+
+        // debugger
+
     }
 
     componentDidMount() {
         console.log("MachineList componentDidMount 进来了。。。")
         this.getList();
+    }
+
+    componentWillReceiveProps(nextProps){
+        console.log("MachineList componentWillReceiveProps nextProps:",nextProps)
     }
 
     getList() {

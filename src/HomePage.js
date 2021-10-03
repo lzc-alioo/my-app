@@ -33,11 +33,15 @@ class HomePage extends React.Component {
 
     }
 
+    componentWillReceiveProps(nextProps){
+        console.log("HomePage componentWillReceiveProps nextProps:",nextProps)
+    }
 
     renderContent(pageText) {
         if (pageText === 'machine-list') {
             return <MachineList server_path={server_path}/>
         } else if (pageText === 'time-list') {
+            // location.href=""
             return <UnavailableTimeList server_path={server_path}/>
         // } else if (pageText === 'net-chart-item') {
         //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
