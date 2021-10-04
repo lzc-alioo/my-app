@@ -9,42 +9,52 @@ import UnavailableTimeList from './component/timelist/UnavailableTimeList';
 import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
-// const server_path = 'http://192.168.16.233:8081';
+import {createBrowserHistory, createHashHistory} from 'history';
+
+const history = createBrowserHistory() // history模式
+
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
+
+
+        // debugger
+        var selectedTab = "";
+        if (this.props.match.params && this.props.match.params.selectedTab) {
+            selectedTab = this.props.match.params.selectedTab;
+
+            console.log("3.HomePage this.props.location.pathname=", this.props.location.pathname)
+            console.log("4.HomePage this.props.match =", this.props.match)
+            console.log("5.HomePage selectedTab =", selectedTab)
+        }
+
         this.state = {
-            selectedTab: 'machine-list-tab',
+            selectedTab: selectedTab,
             hidden: false,
             fullScreen: true,
         };
 
-        console.log("1.REACT_APP_BASE_URL=", process.env.REACT_APP_BASE_URL, process.env.NODE_ENV)
-        console.log("2.REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
+        console.log("1.HomePage REACT_APP_BASE_URL=", process.env.REACT_APP_BASE_URL, process.env.NODE_ENV)
+        console.log("2.HomePage REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
+
 
         if (process.env.NODE_ENV === 'development') {
             console.log('开发环境')
-            // debugger
         } else if (process.env.NODE_ENV === 'production') {
             console.log('生产环境')
         }
 
     }
 
-    componentWillReceiveProps(nextProps){
-        console.log("HomePage componentWillReceiveProps nextProps:",nextProps)
-    }
-
     renderContent(pageText) {
         if (pageText === 'machine-list') {
             return <MachineList server_path={server_path}/>
         } else if (pageText === 'time-list') {
-            // location.href=""
-            return <UnavailableTimeList server_path={server_path}/>
-        // } else if (pageText === 'net-chart-item') {
-        //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
+            return <UnavailableTimeList server_path={server_path} {...this.props} />
+            // } else if (pageText === 'net-chart-item') {
+            //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'net-chart-list') {
             return <NetChartList server_path={server_path}/>
         } else if (pageText === 'jsdemoc') {
@@ -80,12 +90,13 @@ class HomePage extends React.Component {
                         }}
                         />
                         }
-                        selected={this.state.selectedTab === 'machine-list-tab'}
+                        selected={this.state.selectedTab === 'machine-list'}
                         badge={1}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'machine-list-tab',
+                                selectedTab: 'machine-list',
                             });
+                            history.push('machine-list');
                         }}
                         data-seed="logId"
                     >
@@ -111,45 +122,47 @@ class HomePage extends React.Component {
                         title="TV定时"
                         key="Koubei"
                         badge={'new'}
-                        selected={this.state.selectedTab === 'time-list-tab'}
+                        selected={this.state.selectedTab === 'time-list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'time-list-tab',
+                                selectedTab: 'time-list',
                             });
+                            history.push('time-list');
+
                         }}
                         data-seed="logId1"
                     >
                         {this.renderContent('time-list')}
                     </TabBar.Item>
                     {/*<TabBar.Item*/}
-                        {/*icon={*/}
-                            {/*<div style={{*/}
-                                {/*width: '22px',*/}
-                                {/*height: '22px',*/}
-                                {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'*/}
-                            {/*}}*/}
-                            {/*/>*/}
-                        {/*}*/}
-                        {/*selectedIcon={*/}
-                            {/*<div style={{*/}
-                                {/*width: '22px',*/}
-                                {/*height: '22px',*/}
-                                {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'*/}
-                            {/*}}*/}
-                            {/*/>*/}
-                        {/*}*/}
-                        {/*title="图表"*/}
-                        {/*key="Koubei"*/}
-                        {/*badge={'new'}*/}
-                        {/*selected={this.state.selectedTab === 'blackTab'}*/}
-                        {/*onPress={() => {*/}
-                            {/*this.setState({*/}
-                                {/*selectedTab: 'blackTab',*/}
-                            {/*});*/}
-                        {/*}}*/}
-                        {/*data-seed="logId1"*/}
+                    {/*icon={*/}
+                    {/*<div style={{*/}
+                    {/*width: '22px',*/}
+                    {/*height: '22px',*/}
+                    {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'*/}
+                    {/*}}*/}
+                    {/*/>*/}
+                    {/*}*/}
+                    {/*selectedIcon={*/}
+                    {/*<div style={{*/}
+                    {/*width: '22px',*/}
+                    {/*height: '22px',*/}
+                    {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'*/}
+                    {/*}}*/}
+                    {/*/>*/}
+                    {/*}*/}
+                    {/*title="图表"*/}
+                    {/*key="Koubei"*/}
+                    {/*badge={'new'}*/}
+                    {/*selected={this.state.selectedTab === 'blackTab'}*/}
+                    {/*onPress={() => {*/}
+                    {/*this.setState({*/}
+                    {/*selectedTab: 'blackTab',*/}
+                    {/*});*/}
+                    {/*}}*/}
+                    {/*data-seed="logId1"*/}
                     {/*>*/}
-                        {/*{this.renderContent('net-chart-item')}*/}
+                    {/*{this.renderContent('net-chart-item')}*/}
                     {/*</TabBar.Item>*/}
                     <TabBar.Item
                         icon={
@@ -171,11 +184,13 @@ class HomePage extends React.Component {
                         title="图表测试"
                         key="Koubei"
                         badge={''}
-                        selected={this.state.selectedTab === 'net-chart-list-tab'}
+                        selected={this.state.selectedTab === 'net-chart-list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'net-chart-list-tab',
+                                selectedTab: 'net-chart-list',
                             });
+                            history.push('net-chart-list');
+
                         }}
                         data-seed="logId1"
                     >
@@ -201,11 +216,13 @@ class HomePage extends React.Component {
                         title="待启用"
                         key="Friend"
                         dot
-                        selected={this.state.selectedTab === 'greenTab'}
+                        selected={this.state.selectedTab === 'jsdemoc'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'greenTab',
+                                selectedTab: 'jsdemoc',
                             });
+                            history.push('jsdemoc');
+
                         }}
                     >
                         {this.renderContent('jsdemoc')}

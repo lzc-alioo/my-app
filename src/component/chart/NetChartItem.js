@@ -3,6 +3,8 @@ import {Line} from '@ant-design/charts';
 import axios from "axios";
 import './NetChartItem.css'
 
+const server_path = process.env.REACT_APP_SERVER_PATH;
+
 class NetChartItem extends Component {
 
     constructor(props) {
@@ -18,7 +20,7 @@ class NetChartItem extends Component {
     }
 
     getList() {
-        axios.get(this.props.server_path + '/statistic/getNetWorkData?datestr=&machineName=' + this.props.machineName)
+        axios.get(server_path + '/statistic/getNetWorkData?datestr=&machineName=' + this.props.machineName)
             .then((res) => {
 
                 // 注意this指向

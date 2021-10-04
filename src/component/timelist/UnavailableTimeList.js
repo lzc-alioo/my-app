@@ -4,6 +4,9 @@ import {List} from 'antd-mobile';
 import axios from "axios";
 import TimeItem from "./TimeItem";
 
+const server_path = process.env.REACT_APP_SERVER_PATH;
+
+
 class UnavailableTimeList extends React.Component {
 
     constructor(props) {
@@ -15,12 +18,12 @@ class UnavailableTimeList extends React.Component {
     }
 
     componentDidMount() {
-        console.log("TimeList componentDidMount 进来了。。。")
+        console.log("UnavailableTimeList componentDidMount 进来了。。。")
         this.getList();
     }
 
     getList() {
-        axios.get(this.props.server_path + '/statistic/getUnavailableTimeList')
+        axios.get(server_path + '/statistic/getUnavailableTimeList')
             .then((res) => {
                 // 注意this指向
                 this.setState({

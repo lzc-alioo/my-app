@@ -12,6 +12,10 @@ class NetChartList extends React.Component {
         }
     }
 
+    componentDidMount() {
+        console.log("NetChartList componentDidMount 进来了。。。")
+    }
+
 
     render() {
         return (

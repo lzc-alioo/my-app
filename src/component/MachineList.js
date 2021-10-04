@@ -15,8 +15,6 @@ class MachineList extends React.Component {
             mychecked: true
         }
 
-        // debugger
-
     }
 
     componentDidMount() {
@@ -24,9 +22,6 @@ class MachineList extends React.Component {
         this.getList();
     }
 
-    componentWillReceiveProps(nextProps){
-        console.log("MachineList componentWillReceiveProps nextProps:",nextProps)
-    }
 
     getList() {
         axios.get(this.props.server_path + '/statistic/getMachineList')
@@ -53,7 +48,7 @@ class MachineList extends React.Component {
         var act = mychecked ? "on" : "off";
 
         //debugger
-        axios.get(this.props.server_path  + '/statistic/setNetWorkSwitch?mac=' + mac + '&act=' + act)
+        axios.get(this.props.server_path + '/statistic/setNetWorkSwitch?mac=' + mac + '&act=' + act)
             .then((res) => {
 
                 // 注意this指向
@@ -79,7 +74,7 @@ class MachineList extends React.Component {
                 >
 
                     {
-                        this.state.list.map((obj,i) => {
+                        this.state.list.map((obj, i) => {
                             //console.log("obj="+JSON.stringify(obj))
 
                             //TTFFFFTFFTFF ali15可上网   ；TTTFFFTFFTFF 不可上网
@@ -99,7 +94,7 @@ class MachineList extends React.Component {
 
                                     <Card full>
                                         <Card.Header
-                                            title={obj.name + " ( " + (obj.ip ? obj.ip:'--') + ")"}
+                                            title={obj.name + " ( " + (obj.ip ? obj.ip : '--') + ")"}
                                             thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
                                             extra={<Switch
                                                 checked={mychecked}

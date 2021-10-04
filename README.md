@@ -120,6 +120,20 @@ docker exec -it lzcreactv1 bash
 
 ## url同步更新
 当打开第2个tab时，刷新页面时仍回到第2个tab页面
+参考资料：
+使用JavaScript修改浏览器URL地址栏的实现代码 https://www.jb51.net/article/42240.htm
+```javascript
+var stateObject = {};
+var title = "Wow Title";
+var newUrl = "/my/awesome/url";
+history.pushState(stateObject,title,newUrl);
+```
+使用react-router实现单页面应用路由 https://www.jianshu.com/p/d4c42e5a5dfc
+
+```
+npm install --save react-router-dom
+
+```
 
 
 
