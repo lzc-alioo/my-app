@@ -1,5 +1,5 @@
 import React from 'react';
-import OnLineItem from "./NetChartItem";
+import OnLineItem from "./OnLineItem";
 import {List} from 'antd-mobile';
 import moment from 'moment'
 
