@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Line} from '@ant-design/charts';
 import axios from "axios";
-import './NetChartItem.css'
+import './OnLineItem.css'
 
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
-class NetChartItem extends Component {
+class OnLineItem extends Component {
 
     constructor(props) {
         super(props);
@@ -15,12 +15,12 @@ class NetChartItem extends Component {
     }
 
     componentDidMount() {
-        console.log("ChartItem componentDidMount 进来了。。。")
+        console.log("NetChartItem componentDidMount 进来了。。。")
         this.getList();
     }
 
     getList() {
-        axios.get(server_path + '/statistic/getNetWorkData?startTime=&endTime=&machineName=' + this.props.machineName)
+        axios.get(server_path + this.props.subUrl + '?startTime=' + this.props.startTime + '&endTime=' + this.props.endTime + '&machineName=' + this.props.machineName)
             .then((res) => {
 
                 // 注意this指向
@@ -84,4 +84,4 @@ class NetChartItem extends Component {
     }
 }
 
-export default NetChartItem;
+export default OnLineItem;
