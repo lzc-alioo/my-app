@@ -1,6 +1,6 @@
-import React, {useState} from 'react';
+import React from 'react';
 import OnLineItem from "./OnLineItem";
-import {List, DatePicker, Toast, Button} from 'antd-mobile';
+import {DatePicker, Button, Space,} from 'antd-mobile-v5';
 import moment from 'moment'
 
 
@@ -9,68 +9,104 @@ class OnLineList extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            list: [],
-            visible2:false
+            visible1: false,
+            startTime: moment().format('YYYY-MM-DD 00:00'),
+            visible2: false,
+            endTime: moment().format('YYYY-MM-DD 23:59'),
         }
 
-        // const [visible2, setVisible2] = useState(false);
-
     }
+
 
     componentDidMount() {
         console.log("OnLineList componentDidMount 进来了。。。")
     }
 
+    getYYYYMMDDHHmm = (timeStr) => {
+        return moment(timeStr, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHHmm');
+    }
+
 
     render() {
 
-        const startTime = moment().format('YYYYMMDD0000');
-        const endTime = moment().format('YYYYMMDDHHmm');
-
-
-        // const now = new Date();
-        // const visible2=this.state.visible2;
+        // const startTime = moment().format('YYYYMMDD0000');
+        // const endTime = moment().format('YYYYMMDDHHmm');
+        // const startTime = moment(this.state.startTime, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHHmm');
+        // const endTime = moment(this.state.endTime, 'YYYY-MM-DD HH:mm').format('YYYYMMDDHHmm');
 
         return (
             <div>
-                <Button
-                    onClick={() => {
-                        // setVisible2(true)
-                        this.setState({
-                            visible2:true
-                        })
-                    }}
-                >
-                    年-月-日-时-分
-                </Button>
-                <DatePicker
-                    visible={this.state.visible2}
-                    onClose={() => {
-                        // setVisible2(false)
-                        this.setState({
-                            visible2:false
-                        })
-                    }}
-                    precision='minute'
-                    onConfirm={val => {
-                        Toast.show(val.toString());
-                        this.setState({
-                            visible2:false
-                        })
-                        debugger
-                    }}
-                />
+                <div>
+                    <Space wrap>
+                        <>
+                            开始时间：<Button
+                            onClick={() => {
+                                this.setState((prevState) => {
+                                    return {visible1: true}
+                                })
+                            }}
+                        >
+                            {this.state.startTime}
+                        </Button>
+                            <DatePicker
+                                visible={this.state.visible1}
+                                defaultValue={new Date(this.state.startTime + ":00")}
+                                precision='minute'
+                                onClose={() => {
+                                    this.setState((prevState) => {
+                                        return {visible1: false}
+                                    })
+                                }}
 
+                                onConfirm={val => {
+                                    // debugger
+                                    this.setState({
+                                        startTime: moment(val).format('YYYY-MM-DD HH:mm')
+                                    })
+                                    // debugger
+                                }}
+                            />
+                        </>
+                        <>
+                            结束时间：<Button
+                            onClick={() => {
+                                this.setState((prevState) => {
+                                    return {visible2: true}
 
-                <List>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='X3-55'/>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='CM201-2'/>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='ali6s'/>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='ali11'/>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='alioo15'/>
-                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={startTime} endTime={endTime} machineName='hlnew50'/>
+                                })
+                            }}
+                        >
+                            {this.state.endTime}
+                        </Button>
+                            <DatePicker
+                                visible={this.state.visible2}
+                                defaultValue={new Date(this.state.endTime + ":00")}
+                                precision='minute'
+                                onClose={() => {
+                                    this.setState((prevState) => {
+                                        return {visible2: false}
+                                    })
+                                }}
 
-                </List>
+                                onConfirm={val2 => {
+                                    this.setState({
+                                        endTime: moment(val2).format('YYYY-MM-DD HH:mm')
+                                    })
+                                }}
+                            />
+                        </>
+                    </Space>
+
+                </div>
+
+                <div>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='X3-55'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='CM201-2'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='ali6s'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='ali11'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='alioo15'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='hlnew50'/>
+                </div>
 
             </div>
         );

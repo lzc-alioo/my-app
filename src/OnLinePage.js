@@ -1,5 +1,6 @@
 import React from "react";
 import {TabBar} from 'antd-mobile';
+
 import './OnLinePage.css'
 
 
@@ -139,7 +140,7 @@ class OnLinePage extends React.Component {
                             />
                         }
                         title="最近1小时"
-                        key="Koubei"
+                        key="Koubei2"
                         badge={''}
                         selected={this.state.selectedTab === 'least1-online-list'}
                         onPress={() => {

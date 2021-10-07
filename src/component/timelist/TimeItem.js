@@ -4,10 +4,10 @@ import {Card, DatePicker, List} from 'antd-mobile';
 
 class TimeItem extends React.Component {
 
-    constructor(props) {
-        super(props);
-        //debugger
-    }
+    // constructor(props) {
+    //     super(props);
+    //     //debugger
+    // }
 
     render() {
         return (

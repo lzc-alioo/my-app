@@ -9,7 +9,7 @@ import UnavailableTimeList from './component/timelist/UnavailableTimeList';
 import NetChartList from './component/chart/NetChartList';
 import Jsdemoc from './jsdemoc';
 
-import {createBrowserHistory, createHashHistory} from 'history';
+import {createBrowserHistory} from 'history';
 
 const history = createBrowserHistory() // history模式
 
@@ -96,7 +96,7 @@ class HomePage extends React.Component {
                             this.setState({
                                 selectedTab: 'machine-list',
                             });
-                            history.push('machine-list');
+                            history.push('/home/machine-list');
                         }}
                         data-seed="logId"
                     >
@@ -127,7 +127,7 @@ class HomePage extends React.Component {
                             this.setState({
                                 selectedTab: 'time-list',
                             });
-                            history.push('time-list');
+                            history.push('/home/time-list');
 
                         }}
                         data-seed="logId1"
@@ -189,7 +189,7 @@ class HomePage extends React.Component {
                             this.setState({
                                 selectedTab: 'net-chart-list',
                             });
-                            history.push('net-chart-list');
+                            history.push('/home/net-chart-list');
 
                         }}
                         data-seed="logId1"
@@ -225,7 +225,7 @@ class HomePage extends React.Component {
 
                         }}
                     >
-                        {this.renderContent('jsdemoc')}
+                        {this.renderContent('/home/jsdemoc')}
                     </TabBar.Item>
 
                 </TabBar>
