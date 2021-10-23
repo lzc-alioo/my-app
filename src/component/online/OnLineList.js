@@ -106,6 +106,7 @@ class OnLineList extends React.Component {
                     <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='ali11'/>
                     <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='alioo15'/>
                     <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='hlnew50'/>
+                    <OnLineItem subUrl='/statistic/getOnLineData' startTime={this.getYYYYMMDDHHmm(this.state.startTime)} endTime={this.getYYYYMMDDHHmm(this.state.endTime)} machineName='hlold'/>
                 </div>
 
             </div>
