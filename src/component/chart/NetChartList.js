@@ -25,6 +25,7 @@ class NetChartList extends React.Component {
                 <NetChartItem server_path={this.props.server_path} machineName='ali6s'/>
                 <NetChartItem server_path={this.props.server_path} machineName='ali11'/>
                 <NetChartItem server_path={this.props.server_path} machineName='alioo15'/>
+                <NetChartItem server_path={this.props.server_path} machineName='raspberrypi'/>
                 <NetChartItem server_path={this.props.server_path} machineName='hlnew50'/>
                 <NetChartItem server_path={this.props.server_path} machineName='hlold'/>
 
