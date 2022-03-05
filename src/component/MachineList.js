@@ -90,6 +90,7 @@ class MachineList extends React.Component {
                 <WhiteSpace size="lg"/>
                 <List  >
 
+
                     {
                         this.state.list.map((obj, i) => {
                             //console.log("obj="+JSON.stringify(obj))
@@ -97,13 +98,14 @@ class MachineList extends React.Component {
                             var mychecked = obj.checked;
 
                             //debugger
+                            // let myIcon="<span className='iconfont icon-tubiao-zhexiantu'> </span>"
+
                             return (
                                 <Item key={i}>
 
                                     <Card full style={obj.state == "off_online" ? {background: "#EAEAEA"} : {background: "#F0FFFF"}}>
                                         <Card.Header
-                                            title={obj.name + " (" + (obj.ip ? obj.ip : '--') + ")"}
-                                            thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
+                                            title= { obj.name + " (" + (obj.ip ? obj.ip : '--') + ") " }
                                             extra={<Switch
                                                 checked={mychecked}
                                                 onChange={this.accessCtrl.bind(this, obj)}
@@ -112,7 +114,7 @@ class MachineList extends React.Component {
                                             }
                                         />
                                         <Card.Body>
-                                            <div>{obj.mac} </div>
+                                            <div>{obj.mac} <span className="iconfont icon-tubiao-zhexiantu"> </span> </div>
                                         </Card.Body>
                                         <Card.Footer content={"实时下载速度：" + obj.downSpeed} extra={<div> {"实时上传速度：" + obj.upSpeed} </div>}/>
                                     </Card>

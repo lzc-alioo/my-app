@@ -104,7 +104,7 @@ class UnavailableTimeList extends React.Component {
                 }
 
             </List>
-            <span className="iconfont icon-shebeiguanli"> </span>
+
             <span className="iconfont icon-tubiao-zhexiantu"> </span>
 
         </form>);
