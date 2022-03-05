@@ -34,11 +34,11 @@ class HomePage extends React.Component {
             selectedTab: selectedTab,
             hidden: false,
             fullScreen: true,
+            onlineMachineCount: 0,
+            tvState: "",
         };
 
-        console.log("1.HomePage REACT_APP_BASE_URL=", process.env.REACT_APP_BASE_URL, process.env.NODE_ENV)
         console.log("2.HomePage REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
-
 
         if (process.env.NODE_ENV === 'development') {
             console.log('开发环境')
@@ -48,9 +48,23 @@ class HomePage extends React.Component {
 
     }
 
+    modifyOnlineMachineCount = (result, msg) => {
+        // console.log(result, msg)
+        this.setState({
+            onlineMachineCount: msg
+        })
+    }
+    modifyTvState = (result, msg) => {
+        // console.log(result, msg)
+        this.setState({
+            tvState: msg
+        })
+    }
+
+
     renderContent(pageText) {
         if (pageText === 'machine-list') {
-            return <MachineList server_path={server_path}/>
+            return <MachineList server_path={server_path} parent={ this } />
         } else if (pageText === 'time-list') {
             return <UnavailableTimeList server_path={server_path} {...this.props} />
             // } else if (pageText === 'net-chart-item') {
@@ -63,6 +77,8 @@ class HomePage extends React.Component {
 
     }
 
+
+
     render() {
         return (
             <div style={this.state.fullScreen ? {position: 'fixed', height: '100%', width: '100%', top: 0} : {height: 400}}>
@@ -74,7 +90,7 @@ class HomePage extends React.Component {
                     tabBarPosition="top"
                 >
                     <TabBar.Item
-                        title="路由开关"
+                        title="设备开关"
                         key="Life"
                         icon={<div style={{
                             width: '22px',
@@ -91,7 +107,7 @@ class HomePage extends React.Component {
                         />
                         }
                         selected={this.state.selectedTab === 'machine-list'}
-                        badge={1}
+                        badge={this.state.onlineMachineCount}
                         onPress={() => {
                             this.setState({
                                 selectedTab: 'machine-list',
@@ -121,7 +137,7 @@ class HomePage extends React.Component {
                         }
                         title="TV定时"
                         key="Koubei"
-                        badge={'new'}
+                        badge={this.state.tvState}
                         selected={this.state.selectedTab === 'time-list'}
                         onPress={() => {
                             this.setState({
@@ -134,36 +150,6 @@ class HomePage extends React.Component {
                     >
                         {this.renderContent('time-list')}
                     </TabBar.Item>
-                    {/*<TabBar.Item*/}
-                    {/*icon={*/}
-                    {/*<div style={{*/}
-                    {/*width: '22px',*/}
-                    {/*height: '22px',*/}
-                    {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/BTSsmHkPsQSPTktcXyTV.svg) center center /  21px 21px no-repeat'*/}
-                    {/*}}*/}
-                    {/*/>*/}
-                    {/*}*/}
-                    {/*selectedIcon={*/}
-                    {/*<div style={{*/}
-                    {/*width: '22px',*/}
-                    {/*height: '22px',*/}
-                    {/*background: 'url(https://gw.alipayobjects.com/zos/rmsportal/ekLecvKBnRazVLXbWOnE.svg) center center /  21px 21px no-repeat'*/}
-                    {/*}}*/}
-                    {/*/>*/}
-                    {/*}*/}
-                    {/*title="图表"*/}
-                    {/*key="Koubei"*/}
-                    {/*badge={'new'}*/}
-                    {/*selected={this.state.selectedTab === 'blackTab'}*/}
-                    {/*onPress={() => {*/}
-                    {/*this.setState({*/}
-                    {/*selectedTab: 'blackTab',*/}
-                    {/*});*/}
-                    {/*}}*/}
-                    {/*data-seed="logId1"*/}
-                    {/*>*/}
-                    {/*{this.renderContent('net-chart-item')}*/}
-                    {/*</TabBar.Item>*/}
                     <TabBar.Item
                         icon={
                             <div style={{
@@ -181,7 +167,7 @@ class HomePage extends React.Component {
                             }}
                             />
                         }
-                        title="图表测试"
+                        title="流量报表"
                         key="Koubei"
                         badge={''}
                         selected={this.state.selectedTab === 'net-chart-list'}

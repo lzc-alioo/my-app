@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 // import 'antd/dist/antd.css';
 import './index.css';
+import { GlobalStyleIcon } from './iconfont/iconfont.css'
 
 
 import { BrowserRouter, Route } from 'react-router-dom';

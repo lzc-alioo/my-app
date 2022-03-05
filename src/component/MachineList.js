@@ -35,6 +35,23 @@ class MachineList extends React.Component {
                 // console.log("res.data=" + JSON.stringify(res.data));
                 //debugger
 
+                let onlineMachineCount=0;
+                this.state.list.forEach((item,index,array)=>{
+                    if(item.state == "on_line"){
+                        onlineMachineCount++;
+                    }
+                });
+                this.props.parent.modifyOnlineMachineCount(this, onlineMachineCount)
+
+                let tvState="关";
+                this.state.list.forEach((item,index,array)=>{
+                    if(item.name == "X3-55" && item.state == "on_line"){
+                        tvState="开";
+                    }
+                });
+                this.props.parent.modifyTvState(this, tvState)
+
+
             })
             .catch((err) => {
                 console.log(err)
