@@ -3,16 +3,17 @@ import ReactDOM from 'react-dom';
 import 'antd-mobile/dist/antd-mobile.css';
 // import 'antd/dist/antd.css';
 import './index.css';
-import { GlobalStyleIcon } from './iconfont/iconfont.css'
+// import { GlobalStyleIcon } from './iconfont/iconfont.css'
+import  './iconfont/iconfont.css'
 
 
 import { BrowserRouter, Route } from 'react-router-dom';
 
 
-import HomePage from "./HomePage";
-import OnLinePage from "./OnLinePage";
-import OnLinePageTest from "./OnLinePageTest";
-import Jsdemoc from "./jsdemoc";
+import HomePage from "./page/HomePage";
+import OnLinePage from "./page/OnLinePage";
+import OnLinePageTest from "./component/online/OnLinePageTest";
+import Jsdemoc from "./component/demo/jsdemoc";
 
 ReactDOM.render(
 

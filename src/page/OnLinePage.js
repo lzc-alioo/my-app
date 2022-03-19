@@ -1,83 +1,55 @@
 import React from "react";
 import {TabBar} from 'antd-mobile';
-import './HomePage.css'
+
+import './OnLinePage.css'
 
 
-import MachineList from './component/MachineList';
-import UnavailableTimeList from './component/timelist/UnavailableTimeList';
-// import NetChartItem from './component/chart/NetChartItem';
-import NetChartList from './component/chart/NetChartList';
-import Jsdemoc from './jsdemoc';
+import OnLineList from '../component/online/OnLineList';
+import Least3HoursOnLineList from '../component/online/Least3HoursOnLineList';
+import Least1HoursOnLineList from '../component/online/Least1HoursOnLineList';
 
 import {createBrowserHistory} from 'history';
 
 const history = createBrowserHistory() // history模式
 
-const server_path = process.env.REACT_APP_SERVER_PATH;
-
-class HomePage extends React.Component {
+class OnLinePage extends React.Component {
     constructor(props) {
         super(props);
 
-
         // debugger
-        var selectedTab = "";
+        var selectedTab = "online-list";
         if (this.props.match.params && this.props.match.params.selectedTab) {
             selectedTab = this.props.match.params.selectedTab;
 
-            console.log("3.HomePage this.props.location.pathname=", this.props.location.pathname)
-            console.log("4.HomePage this.props.match =", this.props.match)
-            console.log("5.HomePage selectedTab =", selectedTab)
+            console.log("1.OnLinePage this.props.location.pathname=", this.props.location.pathname)
+            console.log("2.OnLinePage this.props.match =", this.props.match)
+            console.log("3.OnLinePage selectedTab =", selectedTab)
         }
 
         this.state = {
             selectedTab: selectedTab,
             hidden: false,
             fullScreen: true,
-            onlineMachineCount: 0,
-            tvState: "",
         };
 
-        console.log("2.HomePage REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
-
         if (process.env.NODE_ENV === 'development') {
-            console.log('开发环境')
+            console.log('开发环境 REACT_APP_SERVER_PATH:'+process.env.REACT_APP_SERVER_PATH)
         } else if (process.env.NODE_ENV === 'production') {
-            console.log('生产环境')
+            console.log('生产环境 REACT_APP_SERVER_PATH:'+process.env.REACT_APP_SERVER_PATH)
         }
 
     }
-
-    modifyOnlineMachineCount = (result, msg) => {
-        // console.log(result, msg)
-        this.setState({
-            onlineMachineCount: msg
-        })
-    }
-    modifyTvState = (result, msg) => {
-        // console.log(result, msg)
-        this.setState({
-            tvState: msg
-        })
-    }
-
 
     renderContent(pageText) {
-        if (pageText === 'machine-list') {
-            return <MachineList server_path={server_path} parent={ this } />
-        } else if (pageText === 'time-list') {
-            return <UnavailableTimeList server_path={server_path} {...this.props} />
-            // } else if (pageText === 'net-chart-item') {
-            //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
-        } else if (pageText === 'net-chart-list') {
-            return <NetChartList server_path={server_path}/>
-        } else if (pageText === 'jsdemoc') {
-            return <Jsdemoc/>
+        if (pageText === 'online-list') {
+            return <OnLineList/>
+        } else if (pageText === 'least3-online-list') {
+            return <Least3HoursOnLineList/>
+        } else if (pageText === 'least1-online-list') {
+            return <Least1HoursOnLineList/>
         }
 
     }
-
-
 
     render() {
         return (
@@ -90,7 +62,7 @@ class HomePage extends React.Component {
                     tabBarPosition="top"
                 >
                     <TabBar.Item
-                        title="设备开关"
+                        title="联网时间"
                         key="Life"
                         icon={<div style={{
                             width: '22px',
@@ -106,17 +78,17 @@ class HomePage extends React.Component {
                         }}
                         />
                         }
-                        selected={this.state.selectedTab === 'machine-list'}
-                        badge={this.state.onlineMachineCount}
+                        selected={this.state.selectedTab === 'online-list'}
+                        badge={1}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'machine-list',
+                                selectedTab: 'online-list',
                             });
-                            history.push('/home/machine-list');
+                            history.push('online-list');
                         }}
                         data-seed="logId"
                     >
-                        {this.renderContent('machine-list')}
+                        {this.renderContent('online-list')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -135,20 +107,20 @@ class HomePage extends React.Component {
                             }}
                             />
                         }
-                        title="TV定时"
+                        title="最近3小时"
                         key="Koubei"
-                        badge={this.state.tvState}
-                        selected={this.state.selectedTab === 'time-list'}
+                        badge={'new'}
+                        selected={this.state.selectedTab === 'least3-online-list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'time-list',
+                                selectedTab: 'least3-online-list',
                             });
-                            history.push('/home/time-list');
+                            history.push('least3-online-list');
 
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('time-list')}
+                        {this.renderContent('least3-online-list')}
                     </TabBar.Item>
                     <TabBar.Item
                         icon={
@@ -167,51 +139,20 @@ class HomePage extends React.Component {
                             }}
                             />
                         }
-                        title="流量报表"
-                        key="Koubei"
+                        title="最近1小时"
+                        key="Koubei2"
                         badge={''}
-                        selected={this.state.selectedTab === 'net-chart-list'}
+                        selected={this.state.selectedTab === 'least1-online-list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'net-chart-list',
+                                selectedTab: 'least1-online-list',
                             });
-                            history.push('/home/net-chart-list');
+                            history.push('least1-online-list');
 
                         }}
                         data-seed="logId1"
                     >
-                        {this.renderContent('net-chart-list')}
-                    </TabBar.Item>
-                    <TabBar.Item
-                        icon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/psUFoAMjkCcjqtUCNPxB.svg) center center /  21px 21px no-repeat'
-                            }}
-                            />
-                        }
-                        selectedIcon={
-                            <div style={{
-                                width: '22px',
-                                height: '22px',
-                                background: 'url(https://zos.alipayobjects.com/rmsportal/IIRLrXXrFAhXVdhMWgUI.svg) center center /  21px 21px no-repeat'
-                            }}
-                            />
-                        }
-                        title="待启用"
-                        key="Friend"
-                        dot
-                        selected={this.state.selectedTab === 'jsdemoc'}
-                        onPress={() => {
-                            this.setState({
-                                selectedTab: 'jsdemoc',
-                            });
-                            history.push('jsdemoc');
-
-                        }}
-                    >
-                        {this.renderContent('/home/jsdemoc')}
+                        {this.renderContent('least1-online-list')}
                     </TabBar.Item>
 
                 </TabBar>
@@ -220,5 +161,5 @@ class HomePage extends React.Component {
     }
 }
 
-export default HomePage
+export default OnLinePage
 

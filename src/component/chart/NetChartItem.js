@@ -11,16 +11,36 @@ class NetChartItem extends Component {
         super(props);
         this.state = {
             list: [],
+            // startTime: this.props.startTime,
+            // endTime: this.props.endTime,
+            // machineName: this.props.machineName
         }
     }
 
     componentDidMount() {
-        console.log("ChartItem componentDidMount 进来了。。。")
-        this.getList();
+        console.log("NetChartItem componentDidMount 进来了。。。")
+        this.getList(this.props);
     }
 
-    getList() {
-        axios.get(server_path + '/statistic/getNetWorkData?startTime=&endTime=&machineName=' + this.props.machineName)
+    componentWillReceiveProps(nextProps) {
+        console.log("NetChartItem componentWillReceiveProps ", nextProps)
+
+        // this.setState({
+        //     startTime: nextProps.startTime,
+        //     endTime: nextProps.endTime,
+        //     machineName: nextProps.machineName
+        // });
+
+        this.getList(nextProps);
+    }
+
+
+    getList(props) {
+        let startTime = props.startTime;
+        let endTime = props.endTime;
+        let machineName = props.machineName;
+
+        axios.get(server_path + '/statistic/getNetWorkData?startTime=' + startTime + '&endTime=' + endTime + '&machineName=' + machineName)
             .then((res) => {
 
                 // 注意this指向

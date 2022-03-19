@@ -1,65 +1,11 @@
 import React, { useState } from 'react'
 
 import { Button, DatePicker, Space, Toast } from 'antd-mobile-v5'
-import moment from 'moment'
+// import moment from 'moment'
 
-const now = new Date()
+// const now = new Date()
 
-function BasicDemo() {
-    const [visible, setVisible] = useState(false)
-    return (
-        <>
-            <Button
-                onClick={() => {
-                    setVisible(true)
-                }}
-            >
-                选择
-            </Button>
-            <DatePicker
-                title='时间选择'
-                visible={visible}
-                onClose={() => {
-                    setVisible(false)
-                }}
-                defaultValue={now}
-                max={now}
-                onConfirm={val => {
-                    Toast.show(val.toDateString())
-                }}
-            />
-        </>
-    )
-}
 
-function RenderChildrenDemo() {
-    const [visible, setVisible] = useState(false)
-    return (
-        <Space align='center'>
-            <Button
-                onClick={() => {
-                    setVisible(true)
-                }}
-            >
-                选择
-            </Button>
-            <DatePicker
-                visible={visible}
-                onClose={() => {
-                    setVisible(false)
-                }}
-                defaultValue={now}
-                max={now}
-            >
-                {value => value?.toDateString()}
-            </DatePicker>
-        </Space>
-    )
-}
-
-function onChange(date, dateString) {
-    console.log(date, dateString);
-}
 
 function Precision() {
     const [visible1, setVisible1] = useState(false)

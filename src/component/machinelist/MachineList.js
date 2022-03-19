@@ -37,7 +37,7 @@ class MachineList extends React.Component {
 
                 let onlineMachineCount=0;
                 this.state.list.forEach((item,index,array)=>{
-                    if(item.state == "on_line"){
+                    if(item.state === "on_line"){
                         onlineMachineCount++;
                     }
                 });
@@ -45,7 +45,7 @@ class MachineList extends React.Component {
 
                 let tvState="关";
                 this.state.list.forEach((item,index,array)=>{
-                    if(item.name == "X3-55" && item.state == "on_line"){
+                    if(item.name === "X3-55" && item.state === "on_line"){
                         tvState="开";
                     }
                 });
@@ -103,9 +103,9 @@ class MachineList extends React.Component {
                             return (
                                 <Item key={i}>
 
-                                    <Card full style={obj.state == "off_online" ? {background: "#EAEAEA"} : {background: "#F0FFFF"}}>
+                                    <Card full style={obj.state === "off_online" ? {background: "#EAEAEA"} : {background: "#F0FFFF"}}>
                                         <Card.Header
-                                            title= { obj.name + " (" + (obj.ip ? obj.ip : '--') + ") " }
+                                            title= {  obj.name + " (" + (obj.ip ? obj.ip : '--') + ") " }
                                             extra={<Switch
                                                 checked={mychecked}
                                                 onChange={this.accessCtrl.bind(this, obj)}
@@ -114,7 +114,7 @@ class MachineList extends React.Component {
                                             }
                                         />
                                         <Card.Body>
-                                            <div>{obj.mac} <span className="iconfont icon-tubiao-zhexiantu"> </span> </div>
+                                            <div> {obj.mac}  </div>
                                         </Card.Body>
                                         <Card.Footer content={"实时下载速度：" + obj.downSpeed} extra={<div> {"实时上传速度：" + obj.upSpeed} </div>}/>
                                     </Card>
