@@ -5,7 +5,7 @@ import './HomePage.css'
 
 import MachineList from '../component/machinelist/MachineList';
 import TimeList from '../component/timelist/TimeList';
-import NetList from '../component/net/NetList';
+import NetList from '../component/netlist/NetList';
 import Jsdemoc from '../component/demo/jsdemoc';
 
 import {createBrowserHistory} from 'history';
