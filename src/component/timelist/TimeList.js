@@ -7,7 +7,7 @@ import TimeItem from "./TimeItem";
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
 
-class UnavailableTimeList extends React.Component {
+class TimeList extends React.Component {
 
     constructor(props) {
         super(props);
@@ -112,4 +112,4 @@ class UnavailableTimeList extends React.Component {
 }
 
 
-export default UnavailableTimeList
+export default TimeList

@@ -4,8 +4,8 @@ import './HomePage.css'
 
 
 import MachineList from '../component/machinelist/MachineList';
-import UnavailableTimeList from '../component/timelist/UnavailableTimeList';
-import NetChartList from '../component/net/NetChartList';
+import TimeList from '../component/timelist/TimeList';
+import NetList from '../component/net/NetList';
 import Jsdemoc from '../component/demo/jsdemoc';
 
 import {createBrowserHistory} from 'history';
@@ -65,11 +65,11 @@ class HomePage extends React.Component {
         if (pageText === 'machine-list') {
             return <MachineList server_path={server_path} parent={ this } />
         } else if (pageText === 'time-list') {
-            return <UnavailableTimeList server_path={server_path} {...this.props} />
+            return <TimeList server_path={server_path} {...this.props} />
             // } else if (pageText === 'net-chart-item') {
             //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'net-chart-list') {
-            return <NetChartList server_path={server_path}/>
+            return <NetList server_path={server_path}/>
         } else if (pageText === 'jsdemoc') {
             return <Jsdemoc/>
         }

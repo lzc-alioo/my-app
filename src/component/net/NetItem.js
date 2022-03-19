@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Line} from '@ant-design/charts';
 import axios from "axios";
-import './NetChartItem.css'
+import './NetItem.css'
 
 const server_path = process.env.REACT_APP_SERVER_PATH;
 
-class NetChartItem extends Component {
+class NetItem extends Component {
 
     constructor(props) {
         super(props);
@@ -104,4 +104,4 @@ class NetChartItem extends Component {
     }
 }
 
-export default NetChartItem;
+export default NetItem;

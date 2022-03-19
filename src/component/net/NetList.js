@@ -1,13 +1,13 @@
 import React from 'react';
-import NetChartItem from "./NetChartItem";
+import NetItem from "./NetItem";
 import {Button, List, WhiteSpace} from 'antd-mobile';
-import './NetChartList.css'
+import './NetList.css'
 
 import moment from 'moment'
 
 const monitor_machine_array = process.env.REACT_APP_monitor_machine.split(",");
 
-class NetChartList extends React.Component {
+class NetList extends React.Component {
 
 
     constructor(props) {
@@ -55,7 +55,7 @@ class NetChartList extends React.Component {
         const elements=[];
         monitor_machine_array.forEach((item)=>{
             elements.push(
-                <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName={item} key={item} />
+                <NetItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName={item} key={item} />
             )
         })
 
@@ -87,7 +87,7 @@ class NetChartList extends React.Component {
 }
 
 
-export default NetChartList
+export default NetList
 
 
 
