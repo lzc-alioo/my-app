@@ -5,8 +5,7 @@ import './HomePage.css'
 
 import MachineList from '../component/machinelist/MachineList';
 import UnavailableTimeList from '../component/timelist/UnavailableTimeList';
-// import NetChartItem from './component/chart/NetChartItem';
-import NetChartList from '../component/chart/NetChartList';
+import NetChartList from '../component/net/NetChartList';
 import Jsdemoc from '../component/demo/jsdemoc';
 
 import {createBrowserHistory} from 'history';
@@ -159,7 +158,7 @@ class HomePage extends React.Component {
                             }}
                             />
                         }
-                        title="待启用"
+                        title="Test"
                         key="Friend"
                         dot
                         selected={this.state.selectedTab === 'jsdemoc'}

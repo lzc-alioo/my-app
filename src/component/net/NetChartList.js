@@ -5,8 +5,10 @@ import './NetChartList.css'
 
 import moment from 'moment'
 
+const monitor_machine_array = process.env.REACT_APP_monitor_machine.split(",");
 
 class NetChartList extends React.Component {
+
 
     constructor(props) {
         super(props);
@@ -50,6 +52,15 @@ class NetChartList extends React.Component {
 
 
     render() {
+        const elements=[];
+        monitor_machine_array.forEach((item)=>{
+            elements.push(
+                <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName={item} key={item} />
+            )
+        })
+
+
+
         return (
             <div>
                 <div>
@@ -62,19 +73,12 @@ class NetChartList extends React.Component {
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam2.bind(this, 1)}>昨天</Button>
                     <WhiteSpace/>
 
-
                 </div>
-                <List>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='X3-55'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='cm201'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='ali6s'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='ali11'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='alioo15'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='raspberrypi'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='hlnew50'/>
-                    <NetChartItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName='hlold'/>
 
+                <List>
+                    {elements}
                 </List>
+
 
             </div>
         );
