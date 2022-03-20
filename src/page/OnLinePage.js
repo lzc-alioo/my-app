@@ -4,9 +4,9 @@ import {TabBar} from 'antd-mobile';
 import './OnLinePage.css'
 
 
-import OnLineList from '../component/online/OnLineList';
-import Least3HoursOnLineList from '../component/online/Least3HoursOnLineList';
-import Least1HoursOnLineList from '../component/online/Least1HoursOnLineList';
+import OnLineList from '../component/onlinelist/OnLineList';
+import Least3HoursOnLineList from '../component/onlinelist/OnLineList';
+import Least1HoursOnLineList from '../component/onlinelist/OnLineList';
 
 import {createBrowserHistory} from 'history';
 

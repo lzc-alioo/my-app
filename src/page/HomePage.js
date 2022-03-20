@@ -6,7 +6,7 @@ import './HomePage.css'
 import MachineList from '../component/machinelist/MachineList';
 import TimeList from '../component/timelist/TimeList';
 import NetList from '../component/netlist/NetList';
-import Jsdemoc from '../component/demo/jsdemoc';
+import OnLineList from '../component/onlinelist/OnLineList';
 
 import {createBrowserHistory} from 'history';
 
@@ -20,7 +20,7 @@ class HomePage extends React.Component {
 
 
         // debugger
-        var selectedTab = "";
+        var selectedTab = "machine-list";
         if (this.props.match.params && this.props.match.params.selectedTab) {
             selectedTab = this.props.match.params.selectedTab;
 
@@ -70,8 +70,8 @@ class HomePage extends React.Component {
             //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'net-chart-list') {
             return <NetList server_path={server_path}/>
-        } else if (pageText === 'jsdemoc') {
-            return <Jsdemoc/>
+        } else if (pageText === 'online-list') {
+            return <OnLineList/>
         }
 
     }
@@ -161,16 +161,16 @@ class HomePage extends React.Component {
                         title="Test"
                         key="Friend"
                         dot
-                        selected={this.state.selectedTab === 'jsdemoc'}
+                        selected={this.state.selectedTab === 'online-list'}
                         onPress={() => {
                             this.setState({
-                                selectedTab: 'jsdemoc',
+                                selectedTab: 'online-list',
                             });
-                            history.push('jsdemoc');
+                            history.push('/home/online-list');
 
                         }}
                     >
-                        {this.renderContent('/home/jsdemoc')}
+                        {this.renderContent('online-list')}
                     </TabBar.Item>
 
                 </TabBar>

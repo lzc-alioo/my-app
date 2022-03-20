@@ -11,9 +11,7 @@ class NetItem extends Component {
         super(props);
         this.state = {
             list: [],
-            // startTime: this.props.startTime,
-            // endTime: this.props.endTime,
-            // machineName: this.props.machineName
+
         }
     }
 
@@ -24,12 +22,6 @@ class NetItem extends Component {
 
     componentWillReceiveProps(nextProps) {
         console.log("NetChartItem componentWillReceiveProps ", nextProps)
-
-        // this.setState({
-        //     startTime: nextProps.startTime,
-        //     endTime: nextProps.endTime,
-        //     machineName: nextProps.machineName
-        // });
 
         this.getList(nextProps);
     }

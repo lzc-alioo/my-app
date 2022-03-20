@@ -15,20 +15,20 @@ class OnLineItem extends Component {
     }
 
     componentDidMount() {
-        console.log("NetChartItem componentDidMount 进来了。。。machineName:" + this.props.machineName + " startTime:" + this.props.startTime);
+        console.log("OnLineItem componentDidMount 进来了。。。machineName:" + this.props.machineName + " startTime:" + this.props.startTime);
         this.getList(this.props);
     }
 
     componentWillReceiveProps(nextProps) {
         // debugger
-        console.log("NetChartItem componentWillReceiveProps 进来了。。。machineName:" + nextProps.machineName + " startTime:" + nextProps.startTime);
+        console.log("OnLineItem componentWillReceiveProps 进来了。。。machineName:" + nextProps.machineName + " startTime:" + nextProps.startTime);
         this.getList(nextProps);
 
     }
 
 
     getList(props) {
-        axios.get(server_path + props.subUrl + '?startTime=' + props.startTime + '&endTime=' + props.endTime + '&machineName=' + props.machineName)
+        axios.get(server_path + '/statistic/getOnLineData?startTime=' + props.startTime + '&endTime=' + props.endTime + '&machineName=' + props.machineName)
             .then((res) => {
 
                 // 注意this指向
