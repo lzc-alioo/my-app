@@ -71,7 +71,7 @@ class HomePage extends React.Component {
         } else if (pageText === 'net-chart-list') {
             return <NetList server_path={server_path}/>
         } else if (pageText === 'online-list') {
-            return <OnLineList/>
+            return <OnLineList server_path={server_path}/>
         }
 
     }

@@ -28,7 +28,7 @@ class OnLineItem extends Component {
 
 
     getList(props) {
-        axios.get(server_path + '/statistic/getOnLineData?startTime=' + props.startTime + '&endTime=' + props.endTime + '&machineName=' + props.machineName)
+        axios.get(server_path + '/machine//getOnlineList?startTime=' + props.startTime + '&endTime=' + props.endTime + '&machineName=' + props.machineName)
             .then((res) => {
 
                 // 注意this指向

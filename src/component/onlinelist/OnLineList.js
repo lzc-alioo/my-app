@@ -3,8 +3,8 @@ import OnLineItem from "./OnLineItem";
 import {Button, List, WhiteSpace} from 'antd-mobile';
 
 import moment from 'moment'
+import axios from "axios";
 
-const monitor_machine_array = process.env.REACT_APP_monitor_machine.split(",");
 
 class OnLineList extends React.Component {
 
@@ -13,13 +13,37 @@ class OnLineList extends React.Component {
         super(props);
         this.state = {
             startTime: "",
-            endTime: ""
+            endTime: "",
+            monitor_machine_array: []
         }
     }
 
     componentDidMount() {
         console.log("OnLineList componentDidMount 进来了。。。")
+        this.getMachineList();
     }
+
+    getMachineList() {
+        const monitor_machine_array = [];
+        axios.get(this.props.server_path + '/machine/getMonitorMachineList')
+            .then((res) => {
+                res.data.forEach((item, index, array) => {
+                    monitor_machine_array.push(item.name);
+                });
+                return monitor_machine_array;
+
+            })
+            .then((monitor_machine_array) => {
+                this.setState({
+                    monitor_machine_array: monitor_machine_array
+                })
+
+            })
+            .catch((err) => {
+                console.log(err)
+            })
+    }
+
 
     modifyQueryParam = (hourOffset, e) => {
         let today = moment().format("YYYYMMDD");
@@ -49,20 +73,19 @@ class OnLineList extends React.Component {
 
 
     render() {
-        const elements=[];
-        monitor_machine_array.forEach((item)=>{
+        const elements = [];
+        this.state.monitor_machine_array.forEach((item) => {
             elements.push(
-                <OnLineItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName={item} key={item} />
+                <OnLineItem server_path={this.props.server_path} startTime={this.state.startTime} endTime={this.state.endTime} machineName={item} key={item}/>
             )
         })
-
 
 
         return (
             <div>
                 <div>
                     <WhiteSpace/>
-                    <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px',marginLeft: '4px'}} onClick={this.modifyQueryParam.bind(this, 1)}>最近1小时</Button>
+                    <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px', marginLeft: '4px'}} onClick={this.modifyQueryParam.bind(this, 1)}>最近1小时</Button>
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam.bind(this, 3)}>最近3小时</Button>
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam.bind(this, 6)}>最近6小时</Button>
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam.bind(this, 12)}>最近12小时</Button>

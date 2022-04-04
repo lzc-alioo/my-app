@@ -32,7 +32,7 @@ class NetItem extends Component {
         let endTime = props.endTime;
         let machineName = props.machineName;
 
-        axios.get(server_path + '/statistic/getNetWorkData?startTime=' + startTime + '&endTime=' + endTime + '&machineName=' + machineName)
+        axios.get(server_path + '/machine//getNetList?startTime=' + startTime + '&endTime=' + endTime + '&machineName=' + machineName)
             .then((res) => {
 
                 // 注意this指向

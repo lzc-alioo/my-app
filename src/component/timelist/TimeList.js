@@ -23,7 +23,7 @@ class TimeList extends React.Component {
     }
 
     getList() {
-        axios.get(server_path + '/statistic/getUnavailableTimeList')
+        axios.get(server_path + '/machine/getDisabledTimeList')
             .then((res) => {
                 // 注意this指向
                 this.setState({
@@ -72,7 +72,7 @@ class TimeList extends React.Component {
         let postData = this.state.list;
 
         axios({
-            url: this.props.server_path + '/statistic/updateUnavailableTimeList',
+            url: this.props.server_path + '/machine/updateDisabledTimeList',
             method: 'post',
             data: postData,
             // headers:{
