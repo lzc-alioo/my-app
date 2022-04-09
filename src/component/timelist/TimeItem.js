@@ -1,23 +1,20 @@
 import React from "react";
 
-import {Card, DatePicker, List} from 'antd-mobile';
+import {Card, Switch} from 'antd-mobile';
+import {DatePicker, List} from 'antd-mobile';
 
 class TimeItem extends React.Component {
-
-    // constructor(props) {
-    //     super(props);
-    //     //debugger
-    // }
 
     render() {
         return (
             <List.Item key={this.props.i}>
-                <Card full>
+                <Card >
                     <Card.Header
+                        extra={<Switch checked={this.props.obj.checked} onChange={checked => this.props.onChangeSwitch(this.props.obj, checked)}/> }
                         title='禁用时间区间'
                         thumb="https://gw.alipayobjects.com/zos/rmsportal/MRhHctKOineMbKAZslML.jpg"
-
-                    />
+                    >
+                    </Card.Header>
                     <Card.Body>
                         <div>
                             <DatePicker
@@ -25,7 +22,7 @@ class TimeItem extends React.Component {
                                 minuteStep={1}
                                 // use12Hours
                                 value={new Date(this.props.obj.startTime)}
-                                onChange={time => this.props.onChange(this.props.obj, this.props.i, 'startTimeStr', time)}
+                                onChange={time => this.props.onChangeTime(this.props.obj, this.props.i, 'startTimeStr', time)}
                             >
                                 <List.Item arrow="horizontal">开始禁用时间</List.Item>
                             </DatePicker>
@@ -35,7 +32,7 @@ class TimeItem extends React.Component {
                                 minuteStep={1}
                                 // use12Hours
                                 value={new Date(this.props.obj.endTime)}
-                                onChange={time => this.props.onChange(this.props.obj, this.props.i, 'endTimeStr', time)}
+                                onChange={time => this.props.onChangeTime(this.props.obj, this.props.i, 'endTimeStr', time)}
                             >
                                 <List.Item arrow="horizontal">结束禁用时间</List.Item>
                             </DatePicker>

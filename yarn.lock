@@ -3430,9 +3430,9 @@
     "lodash.uniq" "^4.5.0"
 
 "caniuse-lite@^1.0.0", "caniuse-lite@^1.0.30000981", "caniuse-lite@^1.0.30001035", "caniuse-lite@^1.0.30001039", "caniuse-lite@^1.0.30001264":
-  "integrity" "sha1-BhPJ5ski5CJ5Lm/O/fmjr+7k+MM="
-  "resolved" "https://registry.npmmirror.com/caniuse-lite/download/caniuse-lite-1.0.30001265.tgz"
-  "version" "1.0.30001265"
+  "integrity" "sha512-1/Cg4jlD9qjZzhbzkzEaAC2JHsP0WrOc8Rd/3a3LuajGzGWR/hD7TVyvq99VqmTy99eVh8Zkmdq213OgvgXx7w=="
+  "resolved" "https://registry.npmmirror.com/caniuse-lite/-/caniuse-lite-1.0.30001327.tgz"
+  "version" "1.0.30001327"
 
 "capture-exit@^2.0.0":
   "integrity" "sha1-+5U7+uvreB9iiYI52rtCbQilCaQ="

@@ -57,6 +57,15 @@ class TimeList extends React.Component {
         this.updateList();
     }
 
+    onChangeSwitch = (obj, checked) => {
+        // debugger
+        obj.checked=checked;
+        console.log("this.state.list===", this.state.list);
+        this.setState({list: this.state.list});
+
+        this.updateList();
+    }
+
 
     formatTime = (date) => {
         /* eslint no-confusing-arrow: 0 */
@@ -68,7 +77,7 @@ class TimeList extends React.Component {
 
     updateList = () => {
 
-        // let postData = {list:this.state.list};
+        // let postData = {list:this.state.list};
         let postData = this.state.list;
 
         axios({
@@ -99,13 +108,13 @@ class TimeList extends React.Component {
                         console.log("timelist i=" + i + ",obj=" + JSON.stringify(obj))
 
                         //debugger
-                        return (<TimeItem key={i} obj={obj} onChange={this.onChangeTime}/>)
+                        return (<TimeItem key={i} obj={obj} onChangeTime={this.onChangeTime}  onChangeSwitch={this.onChangeSwitch} />)
                     })
                 }
 
             </List>
 
-            <span className="iconfont icon-tubiao-zhexiantu"> </span>
+            {/*<span className="iconfont icon-tubiao-zhexiantu"> </span>*/}
 
         </form>);
     }
