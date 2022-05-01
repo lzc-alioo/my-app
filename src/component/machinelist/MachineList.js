@@ -12,7 +12,8 @@ class MachineList extends React.Component {
         super(props);
         this.state = {
             list: [],
-            mychecked: true
+            downloadSpeed: 0,
+            upSpeed: 0
         }
 
     }
@@ -29,8 +30,9 @@ class MachineList extends React.Component {
 
                 // 注意this指向
                 this.setState({
-                    // list: res.data.terminals
-                    list: res.data
+                    list: res.data.list,
+                    downloadSpeed: res.data.downloadSpeed,
+                    upSpeed: res.data.upSpeed,
                 });
                 // console.log("res.data=" + JSON.stringify(res.data));
                 //debugger
@@ -70,8 +72,9 @@ class MachineList extends React.Component {
 
                 // 注意this指向
                 this.setState({
-                    // list: res.data.terminals
-                    list: res.data
+                    list: res.data.list,
+                    downloadSpeed: res.data.downloadSpeed,
+                    upSpeed: res.data.upSpeed,
                 });
                 // console.log("res.data=" + JSON.stringify(res.data));
                 //debugger
@@ -88,17 +91,15 @@ class MachineList extends React.Component {
         return (
             <div>
                 <WhiteSpace size="lg"/>
+                    <div style={{paddingLeft:15}} >
+                        下载速度：{this.state.downloadSpeed}kB/S 上传速度：{this.state.upSpeed}kB/S
+                    </div>
+                <WhiteSpace size="lg"/>
                 <List  >
-
 
                     {
                         this.state.list.map((obj, i) => {
                             //console.log("obj="+JSON.stringify(obj))
-
-                            var mychecked = obj.checked;
-
-                            //debugger
-                            // let myIcon="<span className='iconfont icon-tubiao-zhexiantu'> </span>"
 
                             return (
                                 <Item key={i}>
@@ -107,7 +108,7 @@ class MachineList extends React.Component {
                                         <Card.Header
                                             title= {  obj.name + " (" + (obj.ip ? obj.ip : '--') + ") " }
                                             extra={<Switch
-                                                checked={mychecked}
+                                                checked={obj.checked}
                                                 onChange={this.accessCtrl.bind(this, obj)}
                                             />
 
