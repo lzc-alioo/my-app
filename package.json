@@ -12,7 +12,7 @@
     "antd-mobile": "^2.3.4",
     "antd-mobile-v5": "npm:antd-mobile@^5.0.0-beta.14",
     "axios": "^0.19.2",
-    "moment": "^2.29.1",
+    "moment": "^2.29.4",
     "rc-form": "^2.4.11",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
