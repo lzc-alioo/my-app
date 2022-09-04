@@ -17,16 +17,15 @@ const server_path = process.env.REACT_APP_SERVER_PATH;
 class HomePage extends React.Component {
     constructor(props) {
         super(props);
-
+        console.log("0.HomePage REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, "ENV", process.env.NODE_ENV, this.envString());
 
         // debugger
         var selectedTab = "machine-list";
         if (this.props.match.params && this.props.match.params.selectedTab) {
             selectedTab = this.props.match.params.selectedTab;
 
-            console.log("3.HomePage this.props.location.pathname=", this.props.location.pathname)
-            console.log("4.HomePage this.props.match =", this.props.match)
-            console.log("5.HomePage selectedTab =", selectedTab)
+            console.log("1.HomePage this.props.location.pathname=", this.props.location.pathname)
+            console.log("2.HomePage selectedTab =", selectedTab)
         }
 
         this.state = {
@@ -36,14 +35,6 @@ class HomePage extends React.Component {
             onlineMachineCount: 0,
             tvState: "",
         };
-
-        console.log("2.HomePage REACT_APP_SERVER_PATH=", process.env.REACT_APP_SERVER_PATH, process.env.NODE_ENV)
-
-        if (process.env.NODE_ENV === 'development') {
-            console.log('开发环境')
-        } else if (process.env.NODE_ENV === 'production') {
-            console.log('生产环境')
-        }
 
     }
 
@@ -60,13 +51,23 @@ class HomePage extends React.Component {
         })
     }
 
+    envString() {
+        if (process.env.NODE_ENV === 'development') {
+           return '开发环境';
+        } else if (process.env.NODE_ENV === 'production') {
+            return '生产环境';
+        }
+        return "未知环境"
+    }
 
     renderContent(pageText) {
         if (pageText === 'machine-list') {
             return <MachineList server_path={server_path} parent={ this } />
         } else if (pageText === 'time-list') {
-            return <TimeList server_path={server_path} {...this.props} />
-            // } else if (pageText === 'net-chart-item') {
+            return <TimeList server_path={server_path} abc="1" group="tv" />
+        } else if (pageText === 'time-list-mobile') {
+            return <TimeList server_path={server_path} abc="2" group="mobile" />
+            // } else if (pageText === 'time-list-mobile') {
             //     return <NetChartItem server_path={server_path} machineName='X3-55'/>
         } else if (pageText === 'net-chart-list') {
             return <NetList server_path={server_path}/>
@@ -124,6 +125,24 @@ class HomePage extends React.Component {
                         {this.renderContent('time-list')}
                     </TabBar.Item>
                     <TabBar.Item
+                        icon={  <span className="iconfont icon-dingshi"> </span>  }
+                        selectedIcon={  <span className="iconfont icon-dingshi" style={{fontColor:'blue'}}> </span>  }
+                        title="Mobile定时"
+                        key="Mobile"
+                        badge={''}
+                        selected={this.state.selectedTab === 'time-list-mobile'}
+                        onPress={() => {
+                            this.setState({
+                                selectedTab: 'time-list-mobile',
+                            });
+                            history.push('/home/time-list-mobile');
+
+                        }}
+                        data-seed="logId1"
+                    >
+                        {this.renderContent('time-list-mobile')}
+                    </TabBar.Item>
+                    <TabBar.Item
                         icon={  <span className="iconfont icon-tubiao-zhexiantu"> </span>  }
                         selectedIcon={  <span className="iconfont icon-tubiao-zhexiantu" style={{fontColor:'blue'}}> </span>  }
                         title="流量报表"
@@ -137,7 +156,7 @@ class HomePage extends React.Component {
                             history.push('/home/net-chart-list');
 
                         }}
-                        data-seed="logId1"
+                        data-seed="logId2"
                     >
                         {this.renderContent('net-chart-list')}
                     </TabBar.Item>

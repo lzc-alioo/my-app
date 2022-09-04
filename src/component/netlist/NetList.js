@@ -94,6 +94,7 @@ class NetList extends React.Component {
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam.bind(this, 12)}>最近12小时</Button>
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam.bind(this, 24)}>今天</Button>
                     <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam2.bind(this, 1)}>昨天</Button>
+                    <Button type="primary" className="quickBtn" inline size="small" style={{marginRight: '4px'}} onClick={this.modifyQueryParam2.bind(this, 2)}>前天</Button>
                     <WhiteSpace/>
 
                 </div>

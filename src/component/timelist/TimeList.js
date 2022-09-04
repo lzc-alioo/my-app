@@ -15,15 +15,17 @@ class TimeList extends React.Component {
             list: [],
             mychecked: true
         }
+        // debugger
     }
 
     componentDidMount() {
-        console.log("UnavailableTimeList componentDidMount 进来了。。。")
+        console.log("TimeList componentDidMount 进来了。。。group:"+this.props.group +",abc:"+this.props.abc)
+        // debugger
         this.getList();
     }
 
     getList() {
-        axios.get(server_path + '/machine/getDisabledTimeList')
+        axios.get(server_path + '/machine/getDisabledTimeList?group='+this.props.group)
             .then((res) => {
                 // 注意this指向
                 this.setState({
@@ -81,7 +83,7 @@ class TimeList extends React.Component {
         let postData = this.state.list;
 
         axios({
-            url: this.props.server_path + '/machine/updateDisabledTimeList',
+            url: this.props.server_path + '/machine/updateDisabledTimeList?group=' + this.props.group,
             method: 'post',
             data: postData,
             // headers:{
@@ -105,7 +107,7 @@ class TimeList extends React.Component {
             <List className="date-picker-list">
                 {
                     this.state.list.map((obj, i) => {
-                        console.log("timelist i=" + i + ",obj=" + JSON.stringify(obj))
+                        console.log("time-list group=" + this.props.group + " i=" + i + ",obj=" + JSON.stringify(obj))
 
                         //debugger
                         return (<TimeItem key={i} obj={obj} onChangeTime={this.onChangeTime}  onChangeSwitch={this.onChangeSwitch} />)
